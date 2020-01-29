@@ -1,0 +1,50 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Epinion/Epinions-Instrumented.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying process_1 ...
+  [0.145 s, 0 proof obligations]  verified
+
+Verifying process_2 ...
+  [0.034 s, 19 proof obligations]  error
+Epinion/Epinions-Instrumented.bpl(105,2): Error BP5001: This assertion might not hold.
+Execution trace:
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_3
+    Epinion/Epinions-Instrumented.bpl(112,3): inline$init$0$anon0
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_3$1
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_2
+    Epinion/Epinions-Instrumented.bpl(198,5): inline$updateReview$0$anon0
+    Epinion/Epinions-Instrumented.bpl(198,5): inline$updateReview$0$anon4_Else
+    Epinion/Epinions-Instrumented.bpl(210,3): inline$updateReview$0$anon5_Then
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_2$1
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_1
+    Epinion/Epinions-Instrumented.bpl(155,5): inline$getAllRating$0$anon0
+    Epinion/Epinions-Instrumented.bpl(155,5): inline$getAllRating$0$anon4_Else
+    Epinion/Epinions-Instrumented.bpl(166,8): inline$getAllRating$0$anon5_Then
+    Epinion/Epinions-Instrumented.bpl(80,5): anon0_1$1
+
+Verifying LinearityChecker_getItemReviewsByTrustedUser ...
+  [0.007 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_getReviewItem ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_getAllRating ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_getAverageRatingByTrustedUser ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_updateReview ...
+  [0.007 s, 2 proof obligations]  verified
+
+Verifying LinearityChecker_updateTrust ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_updateUser ...
+  [0.006 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 8 verified, 1 error

@@ -1,0 +1,28 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Subscription/Subscription-Instrumented-SI.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying process_1 ...
+  [0.136 s, 0 proof obligations]  verified
+
+Verifying process_2 ...
+  [0.023 s, 15 proof obligations]  error
+Subscription/Subscription-Instrumented-SI.bpl(80,6): Error BP5001: This assertion might not hold.
+Execution trace:
+    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0
+    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_1
+    Subscription/Subscription-Instrumented-SI.bpl(87,3): inline$init$0$anon0
+    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_1$1
+    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_0
+    Subscription/Subscription-Instrumented-SI.bpl(75,5): anon3_Then
+    Subscription/Subscription-Instrumented-SI.bpl(104,5): inline$addUser$0$anon0
+    Subscription/Subscription-Instrumented-SI.bpl(104,5): inline$addUser$0$anon4_Else
+    Subscription/Subscription-Instrumented-SI.bpl(120,3): inline$addUser$0$anon5_Then
+    Subscription/Subscription-Instrumented-SI.bpl(75,5): anon3_Then$1
+
+Verifying LinearityChecker_removeUser ...
+  [0.007 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 2 verified, 1 error

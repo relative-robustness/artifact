@@ -1,0 +1,30 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Voting/Vote-Instrumented.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying process_1 ...
+  [0.138 s, 0 proof obligations]  verified
+
+Verifying process_2 ...
+  [0.036 s, 21 proof obligations]  error
+Voting/Vote-Instrumented.bpl(128,8): Error BP5001: This assertion might not hold.
+Execution trace:
+    Voting/Vote-Instrumented.bpl(89,5): anon0
+    Voting/Vote-Instrumented.bpl(89,5): anon0_1
+    Voting/Vote-Instrumented.bpl(136,3): inline$init$0$anon0
+    Voting/Vote-Instrumented.bpl(89,5): anon0_1$1
+    Voting/Vote-Instrumented.bpl(89,5): anon0_0
+    Voting/Vote-Instrumented.bpl(105,2): anon5_Else
+    Voting/Vote-Instrumented.bpl(118,5): anon2_0
+    Voting/Vote-Instrumented.bpl(124,8): anon6_Then
+    Voting/Vote-Instrumented.bpl(158,3): inline$addVote$0$anon0
+    Voting/Vote-Instrumented.bpl(158,3): inline$addVote$0$anon4_Else
+    Voting/Vote-Instrumented.bpl(180,5): inline$addVote$0$anon5_Then
+    Voting/Vote-Instrumented.bpl(124,8): anon6_Then$1
+
+Verifying LinearityChecker_addVote ...
+  [0.009 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 2 verified, 1 error

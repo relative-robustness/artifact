@@ -1,0 +1,29 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing FusionTicket/FusionTicket-Instrumented-PC.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying process_1 ...
+  [0.139 s, 0 proof obligations]  verified
+
+Verifying process_2 ...
+  [0.037 s, 34 proof obligations]  error
+FusionTicket/FusionTicket-Instrumented-PC.bpl(125,6): Error BP5001: This assertion might not hold.
+Execution trace:
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_1
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(132,3): inline$init$0$anon0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_1$1
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(85,2): anon7_Else
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(97,5): anon2_0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(102,5): anon8_Else
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(113,5): anon4_0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(119,3): anon9_Then
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(151,5): inline$browse$0$anon0
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(153,8): inline$browse$0$anon3_Then
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(164,11): inline$browse$0$anon2
+    FusionTicket/FusionTicket-Instrumented-PC.bpl(119,3): anon9_Then$1
+
+Boogie program verifier finished with 1 verified, 1 error

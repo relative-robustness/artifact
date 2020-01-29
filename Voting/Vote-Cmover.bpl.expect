@@ -1,0 +1,29 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Voting/Vote-Cmover.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying CommutativityChecker_addVoteR_addVoteW ...
+  [0.132 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Voting/Vote-Cmover.bpl(36,31): Related location: Commutativity check between addVoteR and addVoteW failed
+Execution trace:
+    Voting/Vote-Cmover.bpl(36,31): inline$addVoteR$0$Entry
+    Voting/Vote-Cmover.bpl(38,3): inline$addVoteR$0$anon0
+    Voting/Vote-Cmover.bpl(48,17): inline$addVoteW$0$anon0
+    Voting/Vote-Cmover.bpl(45,31): inline$addVoteW$0$Return
+
+Verifying CommutativityChecker_addVoteW_addVoteR ...
+  [0.008 s, 1 proof obligation]  verified
+
+Verifying CommutativityChecker_addVoteW_addVoteW ...
+  [0.009 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_addVoteR ...
+  [0.007 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_addVoteW ...
+  [0.006 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 4 verified, 1 error

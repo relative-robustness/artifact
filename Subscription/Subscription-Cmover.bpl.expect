@@ -1,0 +1,98 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Subscription/Subscription-Cmover.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying CommutativityChecker_addUserR_addUserW ...
+  [0.120 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(22,31): Related location: Commutativity check between addUserR and addUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(22,31): inline$addUserR$0$Entry
+    Subscription/Subscription-Cmover.bpl(24,3): inline$addUserR$0$anon0
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+
+Verifying CommutativityChecker_addUserR_removeUserW ...
+  [0.007 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(22,31): Related location: Commutativity check between addUserR and removeUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(22,31): inline$addUserR$0$Entry
+    Subscription/Subscription-Cmover.bpl(24,3): inline$addUserR$0$anon0
+    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Return
+
+Verifying CommutativityChecker_addUserW_addUserR ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying CommutativityChecker_addUserW_addUserW ...
+  [0.010 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and addUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$1$anon0
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$1$Return
+
+Verifying CommutativityChecker_addUserW_removeUserR ...
+  [0.006 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and removeUserR failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(40,3): inline$removeUserR$0$anon0
+    Subscription/Subscription-Cmover.bpl(38,31): inline$removeUserR$0$Return
+
+Verifying CommutativityChecker_addUserW_removeUserW ...
+  [0.006 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and removeUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Return
+
+Verifying CommutativityChecker_removeUserR_addUserW ...
+  [0.006 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(38,31): Related location: Commutativity check between removeUserR and addUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(38,31): inline$removeUserR$0$Entry
+    Subscription/Subscription-Cmover.bpl(40,3): inline$removeUserR$0$anon0
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+
+Verifying CommutativityChecker_removeUserR_removeUserW ...
+  [0.013 s, 1 proof obligation]  verified
+
+Verifying CommutativityChecker_removeUserW_addUserR ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying CommutativityChecker_removeUserW_addUserW ...
+  [0.007 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Subscription/Subscription-Cmover.bpl(45,31): Related location: Commutativity check between removeUserW and addUserW failed
+Execution trace:
+    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Entry
+    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
+    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+
+Verifying CommutativityChecker_removeUserW_removeUserR ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying CommutativityChecker_removeUserW_removeUserW ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_removeUserR ...
+  [0.006 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_removeUserW ...
+  [0.006 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 7 verified, 7 errors

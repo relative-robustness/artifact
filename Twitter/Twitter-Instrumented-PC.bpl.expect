@@ -1,0 +1,37 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+Parsing Twitter/Twitter-Instrumented-PC.bpl
+Coalescing blocks...
+Inlining...
+
+Verifying process_1 ...
+  [0.149 s, 0 proof obligations]  verified
+
+Verifying process_2 ...
+  [0.037 s, 23 proof obligations]  error
+Twitter/Twitter-Instrumented-PC.bpl(104,6): Error BP5001: This assertion might not hold.
+Execution trace:
+    Twitter/Twitter-Instrumented-PC.bpl(69,5): anon0
+    Twitter/Twitter-Instrumented-PC.bpl(69,5): anon0_1
+    Twitter/Twitter-Instrumented-PC.bpl(111,3): inline$init$0$anon0
+    Twitter/Twitter-Instrumented-PC.bpl(69,5): anon0_1$1
+    Twitter/Twitter-Instrumented-PC.bpl(69,5): anon0_0
+    Twitter/Twitter-Instrumented-PC.bpl(85,5): anon5_Then
+    Twitter/Twitter-Instrumented-PC.bpl(138,5): inline$fellowUser$0$anon0
+    Twitter/Twitter-Instrumented-PC.bpl(138,5): inline$fellowUser$0$anon4_Else
+    Twitter/Twitter-Instrumented-PC.bpl(163,29): inline$fellowUser$0$anon5_Else
+    Twitter/Twitter-Instrumented-PC.bpl(85,5): anon5_Then$1
+    Twitter/Twitter-Instrumented-PC.bpl(93,5): anon2_0
+    Twitter/Twitter-Instrumented-PC.bpl(99,5): anon6_Then
+    Twitter/Twitter-Instrumented-PC.bpl(176,5): inline$addTweet$0$anon0
+    Twitter/Twitter-Instrumented-PC.bpl(176,5): inline$addTweet$0$anon4_Else
+    Twitter/Twitter-Instrumented-PC.bpl(196,14): inline$addTweet$0$anon5_Then
+    Twitter/Twitter-Instrumented-PC.bpl(99,5): anon6_Then$1
+
+Verifying LinearityChecker_fellowUser ...
+  [0.008 s, 1 proof obligation]  verified
+
+Verifying LinearityChecker_addTweet ...
+  [0.007 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 3 verified, 1 error
