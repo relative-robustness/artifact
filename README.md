@@ -1,14 +1,11 @@
 ----------------------------------------------------------------------
-===============================================================================
-                      Artifact for the manuscript
-===============================================================================
+** Artifact for the manuscript
 
 
 
 
-=====================
-DESCRIPTION of FILES
-=====================
+* DESCRIPTION of FILES
+
 
 Each a sub-directory ```Y``` of the ```artifact``` directory contains 
 the formalization for the application ```Y``` in the Boogie programming language. 
@@ -23,9 +20,8 @@ dependency graph.
   
 
 
-==================
-How to Load Files
-==================
+* How to Load Files
+
  
 NOTE:  Tested with Boogie program verifier version 2.4.1.10503.
 
