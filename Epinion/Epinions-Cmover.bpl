@@ -31,6 +31,7 @@ var {:layer 0,2} Trust: [Uid][Uid]int;
 var {:layer 0,2} ActiveItem: [Iid]bool;
 var {:layer 0,2} ItemName: [Iid]Itl;
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  getItemReviewsByTrustedUser(iid:Iid, uid: Uid) returns (ItemReviewers : [Uid]int, TrustedUsers: [Uid]int)
 {  
@@ -42,6 +43,7 @@ procedure {:atomic}{:layer 2}  getItemReviewsByTrustedUser(iid:Iid, uid: Uid) re
 procedure{:yields}{:layer 1} {:refines "getItemReviewsByTrustedUser"} GetItemReviewsByTrustedUser(iid:Iid, uid: Uid) returns (ItemReviewers : [Uid]int, TrustedUsers: [Uid]int) ;
 ensures {:layer 1} ( (ActiveUser[uid] && ActiveItem[iid]) ==>  (ItemReviewers == Review[iid] && TrustedUsers == Trust[uid]) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  getReviewItem(uid: Uid) returns (UserRating : [Iid]int)
 {  
@@ -52,6 +54,7 @@ procedure {:atomic}{:layer 2}  getReviewItem(uid: Uid) returns (UserRating : [Ii
 procedure{:yields}{:layer 1} {:refines "getReviewItem"} GetReviewItem(uid: Uid) returns (UserRating: [Iid]int) ;
 ensures {:layer 1} ( ActiveUser[uid] ==>  (forall iid:Iid :: UserRating[iid] == Review[iid][uid]) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 //getAverageRating
 //getAllRating
@@ -64,6 +67,7 @@ procedure {:atomic}{:layer 2}  getAllRating(iid: Iid) returns (ItemRating : [Uid
 procedure{:yields}{:layer 1} {:refines "getAllRating"} GetAllRating(iid: Iid) returns (ItemRating: [Uid]int) ;
 ensures {:layer 1} ( ActiveItem[iid] ==>  ItemRating == Review[iid] );
 
+////////////////////////////////////////////////////////////////////////////////
 
 // GetAverageRatingByTrustedUser
 procedure {:atomic}{:layer 2}  getAverageRatingByTrustedUser(iid:Iid, uid: Uid) returns (ItemTrustedRating : [Uid]int)
@@ -75,6 +79,7 @@ procedure {:atomic}{:layer 2}  getAverageRatingByTrustedUser(iid:Iid, uid: Uid) 
 procedure{:yields}{:layer 1} {:refines "getAverageRatingByTrustedUser"} GetAverageRatingByTrustedUser(iid:Iid, uid: Uid) returns (ItemTrustedRating: [Uid]int) ;
 ensures {:layer 1} ( (ActiveItem[iid] && ActiveUser[uid]) ==> (forall uid0:Uid :: Trust[uid][uid0] > 0 ==> ItemTrustedRating[uid0] == Review[iid][uid0]) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateReviewR(iid:Iid, {:linear "uid"} uid: Uid, rating: int)
 {  
@@ -82,6 +87,7 @@ procedure {:right}{:layer 2}  updateReviewR(iid:Iid, {:linear "uid"} uid: Uid, r
 }
 procedure{:yields}{:layer 1} {:refines "updateReviewR"} UpdateReviewR(iid:Iid, {:linear "uid"} uid: Uid, rating: int);
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateReviewW(iid:Iid, {:linear "uid"} uid: Uid, rating: int)
 modifies Review;
@@ -91,12 +97,15 @@ modifies Review;
 procedure{:yields}{:layer 1} {:refines "updateReviewW"} UpdateReviewW(iid:Iid, {:linear "uid"} uid: Uid, rating: int);
 ensures {:layer 1} ( (ActiveItem[iid] && ActiveUser[uid]) ==> (Review[iid][uid] == rating) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateItemR(iid:Iid, itName: Itl)
 {  
     assume(ActiveItem[iid]);
 }
 procedure{:yields}{:layer 1} {:refines "updateItemR"} UpdateItemR(iid:Iid, itName: Itl);
+
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateItemW(iid:Iid, itName: Itl)
 modifies ItemName;
@@ -107,12 +116,15 @@ procedure{:yields}{:layer 1} {:refines "updateItemW"} UpdateItemW(iid:Iid, itNam
 ensures {:layer 1} ( ActiveItem[iid] ==> 
         (ItemName[iid] == itName) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateTrustR({:linear "uid"} uidS:Uid, uidT: Uid, trust: int)
 {  
     assume(ActiveUser[uidS] && ActiveUser[uidT]);
 }
 procedure{:yields}{:layer 1} {:refines "updateTrustR"} UpdateTrustR({:linear "uid"} uidS:Uid, uidT: Uid, trust: int);
+
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateTrustW({:linear "uid"} uidS:Uid, uidT: Uid, trust: int)
 modifies Trust;
@@ -122,12 +134,15 @@ modifies Trust;
 procedure{:yields}{:layer 1} {:refines "updateTrustW"} UpdateTrustW({:linear "uid"} uidS:Uid, uidT: Uid, trust: int);
 ensures {:layer 1} ( (ActiveUser[uidS] && ActiveUser[uidT]) ==> (Trust[uidS][uidT] == trust) );
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateUserR({:linear "uid"} uid:Uid, userName: Unm)
 {  
     assume(ActiveUser[uid]);
 }
 procedure{:yields}{:layer 1} {:refines "updateUserR"} UpdateUserR({:linear "uid"} uid:Uid, userName: Unm);
+
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:right}{:layer 2}  updateUserW({:linear "uid"} uid:Uid, userName: Unm)
 modifies UserName;

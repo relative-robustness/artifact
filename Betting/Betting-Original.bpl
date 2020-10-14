@@ -1,5 +1,8 @@
 // Betting Module
-// Transaction settleBet can be called only by one process
+// Has two transactions: settleBet and placeBet
+// settleBet can only be called by one process
+// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
 
 type Pid;
 type Bid;
@@ -22,6 +25,7 @@ var  {:layer 0,2} time         : int;
 const unique expiryTime   : int;
 const unique P0           : Pid;  // This is the only process that can call settleBet
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  placeBet({:linear "Pid"} pid: Pid, {:linear "Bid"} bid: Bid, amount: int)
 modifies betsStatus, time;
@@ -33,6 +37,7 @@ modifies betsStatus, time;
 }
 procedure {:yields}{:layer 1} {:refines "placeBet"} PlaceBet({:linear "Pid"} pid: Pid, {:linear "Bid"} bid: Bid, amount: int);
 
+////////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  settleBet({:linear "Pid"} pid: Pid) returns (winner:int)
 modifies betsStatus, time;
