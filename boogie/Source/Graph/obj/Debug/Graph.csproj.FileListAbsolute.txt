@@ -1,0 +1,8 @@
+/home/beillahi/Desktop/boogie/Source/Graph/bin/Debug/BoogieGraph.dll
+/home/beillahi/Desktop/boogie/Source/Graph/bin/Debug/BoogieGraph.pdb
+/home/beillahi/Desktop/boogie/Source/Graph/bin/Debug/BoogieCodeContractsExtender.dll
+/home/beillahi/Desktop/boogie/Source/Graph/bin/Debug/BoogieCodeContractsExtender.pdb
+/home/beillahi/Desktop/boogie/Source/Graph/obj/Debug/Graph.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/Graph/obj/Debug/Graph.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/Graph/obj/Debug/BoogieGraph.dll
+/home/beillahi/Desktop/boogie/Source/Graph/obj/Debug/BoogieGraph.pdb

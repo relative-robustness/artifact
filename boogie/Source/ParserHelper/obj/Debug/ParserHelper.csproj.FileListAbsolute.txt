@@ -1,0 +1,6 @@
+/home/beillahi/Desktop/boogie/Binaries/BoogieParserHelper.dll
+/home/beillahi/Desktop/boogie/Binaries/BoogieParserHelper.pdb
+/home/beillahi/Desktop/boogie/Source/ParserHelper/obj/Debug/ParserHelper.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/ParserHelper/obj/Debug/ParserHelper.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/ParserHelper/obj/Debug/BoogieParserHelper.dll
+/home/beillahi/Desktop/boogie/Source/ParserHelper/obj/Debug/BoogieParserHelper.pdb

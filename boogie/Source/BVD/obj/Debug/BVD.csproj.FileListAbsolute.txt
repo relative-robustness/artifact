@@ -1,0 +1,8 @@
+/home/beillahi/Desktop/boogie/Binaries/BVD.exe.config
+/home/beillahi/Desktop/boogie/Binaries/BVD.exe
+/home/beillahi/Desktop/boogie/Binaries/BVD.pdb
+/home/beillahi/Desktop/boogie/Source/BVD/obj/Debug/BVD.csprojAssemblyReference.cache
+/home/beillahi/Desktop/boogie/Source/BVD/obj/Debug/BVD.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/BVD/obj/Debug/BVD.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/BVD/obj/Debug/BVD.exe
+/home/beillahi/Desktop/boogie/Source/BVD/obj/Debug/BVD.pdb

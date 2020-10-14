@@ -1,0 +1,8 @@
+/home/beillahi/Desktop/boogie/Binaries/Boogie.exe.config
+/home/beillahi/Desktop/boogie/Binaries/Boogie.exe
+/home/beillahi/Desktop/boogie/Binaries/Boogie.pdb
+/home/beillahi/Desktop/boogie/Source/BoogieDriver/obj/Debug/BoogieDriver.csprojAssemblyReference.cache
+/home/beillahi/Desktop/boogie/Source/BoogieDriver/obj/Debug/BoogieDriver.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/BoogieDriver/obj/Debug/BoogieDriver.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/BoogieDriver/obj/Debug/Boogie.exe
+/home/beillahi/Desktop/boogie/Source/BoogieDriver/obj/Debug/Boogie.pdb

@@ -1,0 +1,5 @@
+/home/beillahi/Desktop/boogie/Binaries/BoogieModel.dll
+/home/beillahi/Desktop/boogie/Binaries/BoogieModel.pdb
+/home/beillahi/Desktop/boogie/Source/Model/obj/Debug/Model.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/Model/obj/Debug/BoogieModel.dll
+/home/beillahi/Desktop/boogie/Source/Model/obj/Debug/BoogieModel.pdb

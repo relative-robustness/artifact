@@ -1,0 +1,11 @@
+/home/beillahi/Desktop/boogie/Binaries/BoogieModelViewer.dll
+/home/beillahi/Desktop/boogie/Binaries/BoogieModelViewer.pdb
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/ModelViewer.csprojAssemblyReference.cache
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/Microsoft.Boogie.ModelViewer.Main.resources
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/Microsoft.Boogie.ModelViewer.Properties.Resources.resources
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/Microsoft.Boogie.ModelViewer.SourceView.resources
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/ModelViewer.csproj.GenerateResource.cache
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/ModelViewer.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/ModelViewer.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/BoogieModelViewer.dll
+/home/beillahi/Desktop/boogie/Source/ModelViewer/obj/Debug/BoogieModelViewer.pdb

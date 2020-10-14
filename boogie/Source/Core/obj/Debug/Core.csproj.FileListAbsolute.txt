@@ -1,0 +1,15 @@
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieCore.dll
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieCore.pdb
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieBasetypes.dll
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieCodeContractsExtender.dll
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieGraph.dll
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieParserHelper.dll
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieBasetypes.pdb
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieCodeContractsExtender.pdb
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieGraph.pdb
+/home/beillahi/Desktop/boogie/Source/Core/bin/Debug/BoogieParserHelper.pdb
+/home/beillahi/Desktop/boogie/Source/Core/obj/Debug/Core.csprojAssemblyReference.cache
+/home/beillahi/Desktop/boogie/Source/Core/obj/Debug/Core.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/Core/obj/Debug/Core.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/Core/obj/Debug/BoogieCore.dll
+/home/beillahi/Desktop/boogie/Source/Core/obj/Debug/BoogieCore.pdb

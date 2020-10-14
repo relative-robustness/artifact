@@ -1,0 +1,13 @@
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BasetypesTests.dll
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BasetypesTests.pdb
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BoogieBasetypes.dll
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/nunit.framework.dll
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BoogieCodeContractsExtender.dll
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BoogieBasetypes.pdb
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/nunit.framework.pdb
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/nunit.framework.xml
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/bin/Debug/BoogieCodeContractsExtender.pdb
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/obj/Debug/BasetypesTests.csproj.CoreCompileInputs.cache
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/obj/Debug/BasetypesTests.csproj.CopyComplete
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/obj/Debug/BasetypesTests.dll
+/home/beillahi/Desktop/boogie/Source/UnitTests/BasetypesTests/obj/Debug/BasetypesTests.pdb
