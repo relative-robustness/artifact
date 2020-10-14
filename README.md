@@ -2,7 +2,7 @@
       Checking Robustness Between Weak Transactional Consistency Models
 
 
-# DESCRIPTION of FILES
+# Artifact description 
 
 Each a sub-directory ```Y``` of the ```artifact``` directory contains 
 the formalization for the application ```Y``` in the Boogie programming language. 
@@ -14,13 +14,10 @@ to a robustness violation.
 A file which its names ends with the word ```Cmover``` contains 
 the movers checking necessary for building the commutativity 
 dependency graph.
-  
 
-
-# How to Load Examples
+# How to test the artifact
  
 NOTE:  Tested with Boogie program verifier version 2.4.1.10503.
-
 
 ## Steps
 
