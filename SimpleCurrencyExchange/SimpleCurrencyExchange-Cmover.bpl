@@ -1,46 +1,61 @@
 // Simple Currency Exchange Application
-// A trade can be accessed by only the process that added it
+// It has 4 transactions 
+// The save trade transaction is an insert this why the assume must always execute together with the writes (i.e., CAS)
+// Movers check
+// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
 
 type Uid;
+type Tid;
 
 function {:builtin "MapConst"} MapConstBool(bool) : [Uid]bool;
-function {:inline} {:linear "uid"} TidCollector(x: Uid) : [Uid]bool
+function {:inline} {:linear "uid"} UidCollector(x: Uid) : [Uid]bool
 {
   MapConstBool(false)[x := true]
 }
 
+function {:builtin "MapConst"} MapConstBool2(bool) : [Tid]bool;
+function {:inline} {:linear "tid"} TidCollector(x: Tid) : [Tid]bool
+{
+  MapConstBool2(false)[x := true]
+}
 
 // shared variables
-var {:layer 0,2} tradeContents: [int][int]int;
-var {:layer 0,2} tradeUser: [Uid]int;
+var {:layer 0,2} tradeContents: [Tid][int]int;
+var {:layer 0,2} tradeUser: [Tid]Uid;
 
 // constants 
-const unique cstCurFr:int;
-const unique cstCurTo  :int; 
-const unique cstsAmt   :int;
-const unique cstbAmt   :int;
+const unique cstCurFr  :int;   // currency from
+const unique cstCurTo  :int;   // currency to
+const unique cstsAmt   :int;   // 
+const unique cstbAmt   :int;   // 
 const unique cstRate   :int;
 const unique cstTiPl   :int;
 const unique cstoCount :int;
 
-const unique Owner : Uid;
+const unique NoUser : Uid;
 
+///////////////////////////////////////////////////////////////////////////////
+/// SimpleCurrencyExchange transactions
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2}  saveTradeR({:linear "uid"} uid:Uid) returns (tid:int)
+procedure {:right}{:layer 2}  saveTradeR({:linear "uid"} uid:Uid,  {:linear "tid"} tid: Tid)
 modifies tradeUser, tradeContents;
-{  
-   assume(uid != Owner);
-   tid = tradeUser[uid] + 1;
+{     
+  assume(uid != NoUser);
+  assume(tradeUser[tid] == NoUser);
 }
-procedure{:yields}{:layer 1} {:refines "saveTradeR"} SaveTradeR({:linear "tid"} uid:Uid) returns (tid:int);
+procedure{:yields}{:layer 1} {:refines "saveTradeR"} SaveTradeR({:linear "uid"} uid:Uid, {:linear "tid"} tid: Tid);
 
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2}  saveTradeW({:linear "uid"} uid:Uid, curFr:int, curTo:int, sAmt:int, bAmt:int, rate:int, tiPl:int, oCount:int)
+procedure {:right}{:layer 2}  saveTradeW({:linear "uid"} uid:Uid,  {:linear "tid"} tid: Tid, curFr:int, curTo:int, sAmt:int, bAmt:int, rate:int, tiPl:int, oCount:int)
 modifies tradeUser, tradeContents;
-{  
-   assume(uid != Owner);
-   var tid : int;
-   tradeUser[uid] := tid;
+{     
+   assume(uid != NoUser);
+   assume(tradeUser[tid] == NoUser);
+
+   tradeUser[tid] := uid;
    
    tradeContents[tid][cstCurFr] := curFr;
    tradeContents[tid][cstCurTo] := curTo;
@@ -51,28 +66,37 @@ modifies tradeUser, tradeContents;
    tradeContents[tid][cstoCount] := oCount;
    
 }
-procedure{:yields}{:layer 1} {:refines "saveTradeW"} SaveTradeW({:linear "uid"} uid:Uid, curFr:int, curTo:int, sAmt:int, bAmt:int, rate:int, tiPl:int, oCount:int);
+procedure{:yields}{:layer 1} {:refines "saveTradeW"} SaveTradeW({:linear "uid"} uid:Uid, {:linear "tid"} tid: Tid, curFr:int, curTo:int, sAmt:int, bAmt:int, rate:int, tiPl:int, oCount:int);
 
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2} viewTrade({:linear "tid"} uid:Uid, tid: int) returns (cpTradeContent:[int]int)
+procedure {:right}{:layer 2} viewTrade({:linear "uid"} uid:Uid, tid: Tid) returns (cpTradeContent:[int]int)
 {
-  assume(uid == Owner);
+  assume(uid != NoUser);
+  assume(tradeUser[tid] != NoUser);
+
   cpTradeContent := tradeContents[tid];
 }
-procedure {:yields}{:layer 1} {:refines "viewTrade"} ViewTrade({:linear "tid"} uid:Uid, tid: int) returns (cpTradeContent:[int]int);
+procedure {:yields}{:layer 1} {:refines "viewTrade"} ViewTrade({:linear "uid"} uid:Uid, tid: Tid) returns (cpTradeContent:[int]int);
 
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2} viewTradeUser({:linear "tid"} uid:Uid, tid: int) returns (cpTradeUser:Uid)
+procedure {:right}{:layer 2} viewTradeUser({:linear "uid"} uid:Uid, tid: Tid) returns (cpTradeUser:Uid)
 {
-  assume(uid == Owner);
+  assume(uid != NoUser);
+  assume(tradeUser[tid] != NoUser);
+
   cpTradeUser := tradeUser[tid]; 
 }
-procedure {:yields}{:layer 1} {:refines "viewTradeUser"} ViewTradeUser({:linear "tid"} uid:Uid, tid: int) returns (cpTradeUser:Uid);
+procedure {:yields}{:layer 1} {:refines "viewTradeUser"} ViewTradeUser({:linear "uid"} uid:Uid, tid: Tid) returns (cpTradeUser:Uid);
 
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2} getTradeTimeStamp({:linear "tid"} uid:Uid, tid: int) returns (timeTrade:int)
+procedure {:right}{:layer 2} getTradeTimeStamp({:linear "uid"} uid:Uid, tid: Tid) returns (timeTrade:int)
 {
-  assume(uid == Owner);
+  assume(uid != NoUser);
+  assume(tradeUser[tid] != NoUser);
+
   timeTrade:=tradeContents[tid][cstTiPl]; 
 }
-procedure {:yields}{:layer 1} {:refines "getTradeTimeStamp"} GetTradeTimeStamp({:linear "tid"} uid:Uid, tid: int) returns (timeTrade:int);
+procedure {:yields}{:layer 1} {:refines "getTradeTimeStamp"} GetTradeTimeStamp({:linear "uid"} uid:Uid, tid: Tid) returns (timeTrade:int);

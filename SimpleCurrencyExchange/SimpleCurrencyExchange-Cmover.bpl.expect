@@ -1,40 +1,115 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing SimpleCurrencyExchange/SimpleCurrencyExchange-Cmover.bpl
+>>> Becoming sentient   [0.00014 s]
+Parsing SimpleCurrencyExchange-Cmover.bpl
+>>> Starting resolution   [0.050181 s]
+>>> Starting typechecking   [0.065573 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.851236 s]
+>>> Starting live variable analysis   [0.867426 s]
+>>> Finished implementation verification   [0.999965 s]
 
-Verifying CommutativityChecker_saveTrade_saveTrade ...
-  [0.709 s, 1 proof obligation]  verified
+Verifying CommutativityChecker_saveTradeR_saveTradeW ...
+  [0.149 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.00556 s]
+>>> Starting live variable analysis   [1.006458 s]
+>>> Finished implementation verification   [1.022033 s]
 
-Verifying CommutativityChecker_saveTrade_viewTrade ...
+Verifying CommutativityChecker_saveTradeW_saveTradeR ...
+  [0.017 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.022534 s]
+>>> Starting live variable analysis   [1.097655 s]
+>>> Finished implementation verification   [1.61043 s]
+
+Verifying CommutativityChecker_saveTradeW_saveTradeW ...
+  [0.588 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.610704 s]
+>>> Starting live variable analysis   [1.611499 s]
+>>> Finished implementation verification   [1.630118 s]
+
+Verifying CommutativityChecker_saveTradeW_viewTrade ...
+  [0.019 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+SimpleCurrencyExchange-Cmover.bpl(52,31): Related location: Commutativity check between saveTradeW and viewTrade failed
+Execution trace:
+    SimpleCurrencyExchange-Cmover.bpl(52,31): inline$saveTradeW$0$Entry
+    SimpleCurrencyExchange-Cmover.bpl(55,4): inline$saveTradeW$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(75,3): inline$viewTrade$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(73,30): inline$viewTrade$0$Return
+>>> Starting implementation verification   [1.634736 s]
+>>> Starting live variable analysis   [1.635545 s]
+>>> Finished implementation verification   [1.64582 s]
+
+Verifying CommutativityChecker_saveTradeW_viewTradeUser ...
+  [0.011 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+SimpleCurrencyExchange-Cmover.bpl(52,31): Related location: Commutativity check between saveTradeW and viewTradeUser failed
+Execution trace:
+    SimpleCurrencyExchange-Cmover.bpl(52,31): inline$saveTradeW$0$Entry
+    SimpleCurrencyExchange-Cmover.bpl(55,4): inline$saveTradeW$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(86,3): inline$viewTradeUser$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(84,30): inline$viewTradeUser$0$Return
+>>> Starting implementation verification   [1.646038 s]
+>>> Starting live variable analysis   [1.646748 s]
+>>> Finished implementation verification   [1.65644 s]
+
+Verifying CommutativityChecker_saveTradeW_getTradeTimeStamp ...
+  [0.010 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+SimpleCurrencyExchange-Cmover.bpl(52,31): Related location: Commutativity check between saveTradeW and getTradeTimeStamp failed
+Execution trace:
+    SimpleCurrencyExchange-Cmover.bpl(52,31): inline$saveTradeW$0$Entry
+    SimpleCurrencyExchange-Cmover.bpl(55,4): inline$saveTradeW$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(97,3): inline$getTradeTimeStamp$0$anon0
+    SimpleCurrencyExchange-Cmover.bpl(95,30): inline$getTradeTimeStamp$0$Return
+>>> Starting implementation verification   [1.656628 s]
+>>> Starting live variable analysis   [1.657626 s]
+>>> Finished implementation verification   [1.666875 s]
+
+Verifying CommutativityChecker_viewTrade_saveTradeW ...
   [0.010 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.667102 s]
+>>> Starting live variable analysis   [1.667785 s]
+>>> Finished implementation verification   [1.676032 s]
 
-Verifying CommutativityChecker_saveTrade_viewTradeUser ...
-  [0.013 s, 1 proof obligation]  verified
-
-Verifying CommutativityChecker_saveTrade_getTradeTimeStamp ...
+Verifying CommutativityChecker_viewTradeUser_saveTradeW ...
   [0.009 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.676226 s]
+>>> Starting live variable analysis   [1.677026 s]
+>>> Finished implementation verification   [1.685058 s]
 
-Verifying CommutativityChecker_viewTrade_saveTrade ...
-  [0.010 s, 1 proof obligation]  verified
-
-Verifying CommutativityChecker_viewTradeUser_saveTrade ...
-  [0.011 s, 1 proof obligation]  verified
-
-Verifying CommutativityChecker_getTradeTimeStamp_saveTrade ...
+Verifying CommutativityChecker_getTradeTimeStamp_saveTradeW ...
   [0.009 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.685311 s]
+>>> Starting live variable analysis   [1.686283 s]
+>>> Finished implementation verification   [1.692129 s]
 
-Verifying LinearityChecker_saveTrade ...
-  [0.007 s, 1 proof obligation]  verified
+Verifying LinearityChecker_saveTradeR ...
+  [0.007 s, 2 proof obligations]  verified
+>>> Starting implementation verification   [1.692255 s]
+>>> Starting live variable analysis   [1.692393 s]
+>>> Finished implementation verification   [1.698269 s]
+
+Verifying LinearityChecker_saveTradeW ...
+  [0.006 s, 2 proof obligations]  verified
+>>> Starting implementation verification   [1.698449 s]
+>>> Starting live variable analysis   [1.698627 s]
+>>> Finished implementation verification   [1.704451 s]
 
 Verifying LinearityChecker_viewTrade ...
-  [0.010 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.704603 s]
+>>> Starting live variable analysis   [1.704759 s]
+>>> Finished implementation verification   [1.71051 s]
 
 Verifying LinearityChecker_viewTradeUser ...
-  [0.011 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.710724 s]
+>>> Starting live variable analysis   [1.710915 s]
+>>> Finished implementation verification   [1.716604 s]
 
 Verifying LinearityChecker_getTradeTimeStamp ...
   [0.006 s, 1 proof obligation]  verified
 
-Boogie program verifier finished with 11 verified, 0 errors
+Boogie program verifier finished with 11 verified, 3 errors
