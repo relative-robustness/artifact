@@ -10,7 +10,7 @@ type Eid;   // Event identifier type
 type Vid;  //  Venue identifier type
 
 function {:builtin "MapConst"} MapConstBool(bool) : [Pid]bool;
-function {:inline} {:linear "pid"} TidCollector(x: Pid) : [Pid]bool
+function {:inline} {:linear "pid"} PidCollector(x: Pid) : [Pid]bool
 {
   MapConstBool(false)[x := true]
 }

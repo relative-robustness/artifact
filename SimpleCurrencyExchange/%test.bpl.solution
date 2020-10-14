@@ -1,0 +1,76 @@
+[TRACE] Using prover: /usr/bin/z3
+Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
+>>> Becoming sentient   [0.000105 s]
+Parsing SimpleCurrencyExchange-Cmover.bpl
+>>> Starting resolution   [0.048543 s]
+>>> Starting typechecking   [0.062889 s]
+Coalescing blocks...
+Inlining...
+>>> Starting implementation verification   [0.795361 s]
+>>> Starting live variable analysis   [0.88158 s]
+>>> Finished implementation verification   [1.47818 s]
+
+Verifying CommutativityChecker_saveTrade_saveTrade ...
+  [0.683 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.482712 s]
+>>> Starting live variable analysis   [1.483323 s]
+>>> Finished implementation verification   [1.493417 s]
+
+Verifying CommutativityChecker_saveTrade_viewTrade ...
+  [0.011 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.493879 s]
+>>> Starting live variable analysis   [1.494495 s]
+>>> Finished implementation verification   [1.50239 s]
+
+Verifying CommutativityChecker_saveTrade_viewTradeUser ...
+  [0.009 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.502552 s]
+>>> Starting live variable analysis   [1.503128 s]
+>>> Finished implementation verification   [1.511018 s]
+
+Verifying CommutativityChecker_saveTrade_getTradeTimeStamp ...
+  [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.511142 s]
+>>> Starting live variable analysis   [1.511708 s]
+>>> Finished implementation verification   [1.521426 s]
+
+Verifying CommutativityChecker_viewTrade_saveTrade ...
+  [0.010 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.521536 s]
+>>> Starting live variable analysis   [1.522093 s]
+>>> Finished implementation verification   [1.529549 s]
+
+Verifying CommutativityChecker_viewTradeUser_saveTrade ...
+  [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.529749 s]
+>>> Starting live variable analysis   [1.530322 s]
+>>> Finished implementation verification   [1.537912 s]
+
+Verifying CommutativityChecker_getTradeTimeStamp_saveTrade ...
+  [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.538174 s]
+>>> Starting live variable analysis   [1.538975 s]
+>>> Finished implementation verification   [1.544566 s]
+
+Verifying LinearityChecker_saveTrade ...
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.544729 s]
+>>> Starting live variable analysis   [1.544818 s]
+>>> Finished implementation verification   [1.549836 s]
+
+Verifying LinearityChecker_viewTrade ...
+  [0.005 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.549953 s]
+>>> Starting live variable analysis   [1.550041 s]
+>>> Finished implementation verification   [1.555179 s]
+
+Verifying LinearityChecker_viewTradeUser ...
+  [0.005 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [1.555352 s]
+>>> Starting live variable analysis   [1.555435 s]
+>>> Finished implementation verification   [1.560814 s]
+
+Verifying LinearityChecker_getTradeTimeStamp ...
+  [0.006 s, 1 proof obligation]  verified
+
+Boogie program verifier finished with 11 verified, 0 errors

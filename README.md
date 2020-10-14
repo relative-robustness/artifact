@@ -1,17 +1,19 @@
 ----------------------------------------------------------------------
+===============================================================================
+                      Artifact for the manuscript
+===============================================================================
 
-# Artifact for the manuscript
 
 
 
-
-## DESCRIPTION of FILES
-
+=====================
+DESCRIPTION of FILES
+=====================
 
 Each a sub-directory ```Y``` of the ```artifact``` directory contains 
 the formalization for the application ```Y``` in the Boogie programming language. 
-The full formalization of the application is given the file such that 
-its name ends with the word ```Original```.
+The full formalization of the application is given the file which its name 
+ends with the word ```Original```.
 A file which its name contains the word ```Instrumented``` contains 
 a client program of the corresponding application that is a witness 
 to a robustness violation. 
@@ -21,13 +23,14 @@ dependency graph.
   
 
 
-## How to Load Files
-
+==================
+How to Load Files
+==================
  
 NOTE:  Tested with Boogie program verifier version 2.4.1.10503.
 
 ------
-### STEPS
+STEPS
 ------
 
   0. Install ```boogie``` 
