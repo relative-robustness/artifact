@@ -1,6 +1,7 @@
 // Cassandra Lock Module
 // Each lock can be controlled by at most one process at a time 
-// It has three transactions: tryLock, unlock, and keepAlive
+// It has 3 transactions: tryLock, unlock, and keepAlive
+// Movers check
 // RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 

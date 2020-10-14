@@ -1,104 +1,155 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Epinion/Epinions-Cmover.bpl
+>>> Becoming sentient   [0.000129 s]
+Parsing Epinions-Cmover.bpl
+>>> Starting resolution   [0.052096 s]
+>>> Starting typechecking   [0.069357 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.258489 s]
+>>> Starting live variable analysis   [0.272815 s]
+>>> Finished implementation verification   [0.381587 s]
 
 Verifying CommutativityChecker_updateReviewW_getItemReviewsByTrustedUser ...
-  [0.116 s, 1 proof obligation]  error
+  [0.123 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(85,31): Related location: Commutativity check between updateReviewW and getItemReviewsByTrustedUser failed
+Epinions-Cmover.bpl(94,31): Related location: Commutativity check between updateReviewW and getItemReviewsByTrustedUser failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(85,31): inline$updateReviewW$0$Entry
-    Epinion/Epinions-Cmover.bpl(88,22): inline$updateReviewW$0$anon0
-    Epinion/Epinions-Cmover.bpl(36,5): inline$getItemReviewsByTrustedUser$0$anon0
-    Epinion/Epinions-Cmover.bpl(34,32): inline$getItemReviewsByTrustedUser$0$Return
+    Epinions-Cmover.bpl(94,31): inline$updateReviewW$0$Entry
+    Epinions-Cmover.bpl(97,22): inline$updateReviewW$0$anon0
+    Epinions-Cmover.bpl(42,5): inline$getItemReviewsByTrustedUser$0$anon0
+    Epinions-Cmover.bpl(39,31): inline$getItemReviewsByTrustedUser$0$Return
+>>> Starting implementation verification   [0.390115 s]
+>>> Starting live variable analysis   [0.390339 s]
+>>> Finished implementation verification   [0.399184 s]
 
 Verifying CommutativityChecker_updateReviewW_getReviewItem ...
-  [0.010 s, 1 proof obligation]  error
+  [0.009 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(85,31): Related location: Commutativity check between updateReviewW and getReviewItem failed
+Epinions-Cmover.bpl(94,31): Related location: Commutativity check between updateReviewW and getReviewItem failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(85,31): inline$updateReviewW$0$Entry
-    Epinion/Epinions-Cmover.bpl(88,22): inline$updateReviewW$0$anon0
-    Epinion/Epinions-Cmover.bpl(47,5): inline$getReviewItem$0$anon0
-    Epinion/Epinions-Cmover.bpl(45,32): inline$getReviewItem$0$Return
+    Epinions-Cmover.bpl(94,31): inline$updateReviewW$0$Entry
+    Epinions-Cmover.bpl(97,22): inline$updateReviewW$0$anon0
+    Epinions-Cmover.bpl(54,5): inline$getReviewItem$0$anon0
+    Epinions-Cmover.bpl(52,32): inline$getReviewItem$0$Return
+>>> Starting implementation verification   [0.399728 s]
+>>> Starting live variable analysis   [0.399916 s]
+>>> Finished implementation verification   [0.406764 s]
 
 Verifying CommutativityChecker_updateReviewW_getAllRating ...
-  [0.006 s, 1 proof obligation]  error
+  [0.007 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(85,31): Related location: Commutativity check between updateReviewW and getAllRating failed
+Epinions-Cmover.bpl(94,31): Related location: Commutativity check between updateReviewW and getAllRating failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(85,31): inline$updateReviewW$0$Entry
-    Epinion/Epinions-Cmover.bpl(88,22): inline$updateReviewW$0$anon0
-    Epinion/Epinions-Cmover.bpl(59,5): inline$getAllRating$0$anon0
-    Epinion/Epinions-Cmover.bpl(57,32): inline$getAllRating$0$Return
+    Epinions-Cmover.bpl(94,31): inline$updateReviewW$0$Entry
+    Epinions-Cmover.bpl(97,22): inline$updateReviewW$0$anon0
+    Epinions-Cmover.bpl(66,5): inline$getAllRating$0$anon0
+    Epinions-Cmover.bpl(64,32): inline$getAllRating$0$Return
+>>> Starting implementation verification   [0.407059 s]
+>>> Starting live variable analysis   [0.407292 s]
+>>> Finished implementation verification   [0.414338 s]
 
 Verifying CommutativityChecker_updateReviewW_getAverageRatingByTrustedUser ...
   [0.007 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(85,31): Related location: Commutativity check between updateReviewW and getAverageRatingByTrustedUser failed
+Epinions-Cmover.bpl(94,31): Related location: Commutativity check between updateReviewW and getAverageRatingByTrustedUser failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(85,31): inline$updateReviewW$0$Entry
-    Epinion/Epinions-Cmover.bpl(88,22): inline$updateReviewW$0$anon0
-    Epinion/Epinions-Cmover.bpl(70,5): inline$getAverageRatingByTrustedUser$0$anon0
-    Epinion/Epinions-Cmover.bpl(68,32): inline$getAverageRatingByTrustedUser$0$Return
+    Epinions-Cmover.bpl(94,31): inline$updateReviewW$0$Entry
+    Epinions-Cmover.bpl(97,22): inline$updateReviewW$0$anon0
+    Epinions-Cmover.bpl(77,5): inline$getAverageRatingByTrustedUser$0$anon0
+    Epinions-Cmover.bpl(75,32): inline$getAverageRatingByTrustedUser$0$Return
+>>> Starting implementation verification   [0.414523 s]
+>>> Starting live variable analysis   [0.414874 s]
+>>> Finished implementation verification   [0.425606 s]
 
 Verifying CommutativityChecker_updateReviewW_updateReviewW ...
-  [0.010 s, 1 proof obligation]  verified
+  [0.011 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.425887 s]
+>>> Starting live variable analysis   [0.426098 s]
+>>> Finished implementation verification   [0.432337 s]
 
 Verifying CommutativityChecker_updateItemW_updateItemW ...
-  [0.007 s, 1 proof obligation]  error
-(0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(100,31): Related location: Commutativity check between updateItemW and updateItemW failed
-Execution trace:
-    Epinion/Epinions-Cmover.bpl(100,31): inline$updateItemW$0$Entry
-    Epinion/Epinions-Cmover.bpl(103,19): inline$updateItemW$0$anon0
-    Epinion/Epinions-Cmover.bpl(103,19): inline$updateItemW$1$anon0
-    Epinion/Epinions-Cmover.bpl(100,31): inline$updateItemW$1$Return
-
-Verifying CommutativityChecker_updateTrustW_getItemReviewsByTrustedUser ...
   [0.006 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(116,31): Related location: Commutativity check between updateTrustW and getItemReviewsByTrustedUser failed
+Epinions-Cmover.bpl(111,31): Related location: Commutativity check between updateItemW and updateItemW failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(116,31): inline$updateTrustW$0$Entry
-    Epinion/Epinions-Cmover.bpl(119,23): inline$updateTrustW$0$anon0
-    Epinion/Epinions-Cmover.bpl(36,5): inline$getItemReviewsByTrustedUser$0$anon0
-    Epinion/Epinions-Cmover.bpl(34,32): inline$getItemReviewsByTrustedUser$0$Return
+    Epinions-Cmover.bpl(111,31): inline$updateItemW$0$Entry
+    Epinions-Cmover.bpl(114,19): inline$updateItemW$0$anon0
+    Epinions-Cmover.bpl(114,19): inline$updateItemW$1$anon0
+    Epinions-Cmover.bpl(111,31): inline$updateItemW$1$Return
+>>> Starting implementation verification   [0.432628 s]
+>>> Starting live variable analysis   [0.432847 s]
+>>> Finished implementation verification   [0.439474 s]
+
+Verifying CommutativityChecker_updateTrustW_getItemReviewsByTrustedUser ...
+  [0.007 s, 1 proof obligation]  error
+(0,0): Error BP5003: A postcondition might not hold on this return path.
+Epinions-Cmover.bpl(130,31): Related location: Commutativity check between updateTrustW and getItemReviewsByTrustedUser failed
+Execution trace:
+    Epinions-Cmover.bpl(130,31): inline$updateTrustW$0$Entry
+    Epinions-Cmover.bpl(133,23): inline$updateTrustW$0$anon0
+    Epinions-Cmover.bpl(42,5): inline$getItemReviewsByTrustedUser$0$anon0
+    Epinions-Cmover.bpl(39,31): inline$getItemReviewsByTrustedUser$0$Return
+>>> Starting implementation verification   [0.439813 s]
+>>> Starting live variable analysis   [0.440021 s]
+>>> Finished implementation verification   [0.446653 s]
 
 Verifying CommutativityChecker_updateTrustW_getAverageRatingByTrustedUser ...
   [0.007 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Epinion/Epinions-Cmover.bpl(116,31): Related location: Commutativity check between updateTrustW and getAverageRatingByTrustedUser failed
+Epinions-Cmover.bpl(130,31): Related location: Commutativity check between updateTrustW and getAverageRatingByTrustedUser failed
 Execution trace:
-    Epinion/Epinions-Cmover.bpl(116,31): inline$updateTrustW$0$Entry
-    Epinion/Epinions-Cmover.bpl(119,23): inline$updateTrustW$0$anon0
-    Epinion/Epinions-Cmover.bpl(70,5): inline$getAverageRatingByTrustedUser$0$anon0
-    Epinion/Epinions-Cmover.bpl(68,32): inline$getAverageRatingByTrustedUser$0$Return
+    Epinions-Cmover.bpl(130,31): inline$updateTrustW$0$Entry
+    Epinions-Cmover.bpl(133,23): inline$updateTrustW$0$anon0
+    Epinions-Cmover.bpl(77,5): inline$getAverageRatingByTrustedUser$0$anon0
+    Epinions-Cmover.bpl(75,32): inline$getAverageRatingByTrustedUser$0$Return
+>>> Starting implementation verification   [0.446855 s]
+>>> Starting live variable analysis   [0.447061 s]
+>>> Finished implementation verification   [0.452818 s]
 
 Verifying CommutativityChecker_updateTrustW_updateTrustW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.45296 s]
+>>> Starting live variable analysis   [0.453113 s]
+>>> Finished implementation verification   [0.458981 s]
 
 Verifying CommutativityChecker_updateUserW_updateUserW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.459209 s]
+>>> Starting live variable analysis   [0.460281 s]
+>>> Finished implementation verification   [0.466274 s]
 
 Verifying LinearityChecker_updateReviewR ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.46648 s]
+>>> Starting live variable analysis   [0.466642 s]
+>>> Finished implementation verification   [0.472177 s]
 
 Verifying LinearityChecker_updateReviewW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.472347 s]
+>>> Starting live variable analysis   [0.472457 s]
+>>> Finished implementation verification   [0.477755 s]
 
 Verifying LinearityChecker_updateTrustR ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.005 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.4779 s]
+>>> Starting live variable analysis   [0.478014 s]
+>>> Finished implementation verification   [0.48323 s]
 
 Verifying LinearityChecker_updateTrustW ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.005 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.483367 s]
+>>> Starting live variable analysis   [0.483481 s]
+>>> Finished implementation verification   [0.488879 s]
 
 Verifying LinearityChecker_updateUserR ...
-  [0.008 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.48902 s]
+>>> Starting live variable analysis   [0.489188 s]
+>>> Finished implementation verification   [0.49471 s]
 
 Verifying LinearityChecker_updateUserW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
 
 Boogie program verifier finished with 9 verified, 7 errors

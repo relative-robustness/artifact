@@ -1,6 +1,7 @@
 // Betting Module
-// Has two transactions: settleBet and placeBet
+// Has 2 transactions: settleBet and placeBet
 // settleBet can only be called by one process
+// Movers check
 // RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
