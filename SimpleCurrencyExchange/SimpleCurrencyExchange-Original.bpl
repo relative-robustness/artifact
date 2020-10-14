@@ -1,6 +1,6 @@
 // Simple Currency Exchange Application
 // It has 4 transactions 
-// The save trade transaction is an insert this why the assume must always execute together with the writes (i.e., CAS)
+// The save trade transaction is an SQL insert this why the assume must always execute together with the writes (i.e., CAS)
 
 type Uid;
 type Tid;
