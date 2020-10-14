@@ -1,8 +1,6 @@
 // Cassandra Lock Module
 // Each lock can be controlled by at most one process at a time 
 // It has three transactions: tryLock, unlock, and keepAlive
-// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
-// RUN: %diff "%s.expect" "%t"
 
 type Oid;     // process id 
 type Lnm;    // lock number 
@@ -17,7 +15,9 @@ var  {:layer 0,2} locksStatus   : [Lnm]Oid;
 
 const unique ONIL: Oid;
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+/// CassandraLock transactions
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  tryLock(oid: Oid, {:linear "lnm"} lnm: Lnm)
 modifies locksStatus;

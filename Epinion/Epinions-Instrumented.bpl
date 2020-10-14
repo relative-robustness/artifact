@@ -1,7 +1,7 @@
 // Epinions Application
 // It has 8 transactions
 // A user is represented by a single process
-// Non-robustness check
+// Non-robustness check between CC and PC 
 // RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
 
@@ -132,7 +132,7 @@ ensures {:layer 1} (varAtt1 == INIL0 && varAtt2 == UNIL0 && !att);
 ensures {:layer 1} (forall iId:Iid, uId:Uid, pid:Pid::  hbd[iId][uId][pid] == 0) ;
 
 ///////////////////////////////////////////////////////////////////////////////
-/// The instrumented Epinions procedures
+/// The instrumented Epinions transactions
 ///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  getItemReviewsByTrustedUser(iid:Iid, uid:Uid) returns (ItemReviewers : [Uid]int, TrustedUsers: [Uid]int)

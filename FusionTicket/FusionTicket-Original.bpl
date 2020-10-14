@@ -1,9 +1,6 @@
-// FusionTicket Application
-// We assume each event is provided with a unique identifier,
-// Thus, the addEvent behaves like SQL insert
-// RUN: %boogie -noinfer -typeEncoding:m -trace -errorTrace:2 -useArrayTheory "%FusionTicketInstrumented.bpl" > "%FusionTicketInstrumented.bpl.solution"
-
-
+// FusionTicket Application 
+// It has 3 transactions
+// We assume each event regardless of the venue is provided with a unique identifier, thus the addEvent behaves like an SQL insert 
 
 type Pid;
 type Eid;   // Event identifier type
@@ -19,7 +16,9 @@ function {:inline} {:linear "pid"} PidCollector(x: Pid) : [Pid]bool
 var   {:layer 0,2} EventsByVenue        : [Vid][Eid]bool;	
 var   {:layer 0,2} EventNbTicket        : [Vid][Eid]int;
 
-
+///////////////////////////////////////////////////////////////////////////////
+/// FusionTicket transactions
+///////////////////////////////////////////////////////////////////////////////
   
 procedure  {:atomic}{:layer 2} browse(pid:Pid, venueId0:Vid) returns (eventsId:[Eid]bool)
 {  	   
@@ -27,7 +26,7 @@ procedure  {:atomic}{:layer 2} browse(pid:Pid, venueId0:Vid) returns (eventsId:[
 }
 procedure  {:yields} {:layer 1} {:refines "browse"}  Browse(pid:Pid,venueId0:Vid) returns (eventsId:[Eid]bool);
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  purchaseTicket(pid:Pid, eventId0:Eid, venueId0: Vid) returns (price:int)
 modifies  EventNbTicket;
@@ -50,6 +49,7 @@ modifies  EventNbTicket;
 procedure  {:yields} {:layer 1} {:refines "purchaseTicket"}  PurchaseTicket(pid:Pid, eventId0:Eid, venueId0: Vid) returns (price:int);
 		ensures {:layer 1} ((EventNbTicket[venueId0][eventId0] == old(EventNbTicket[venueId0][eventId0]) - 1) );
 
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2} addEvent(pid:Pid, eventId0:Eid, venueId0:Vid) 
 modifies EventsByVenue, EventNbTicket;

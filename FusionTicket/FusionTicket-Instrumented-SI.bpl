@@ -1,14 +1,16 @@
-// FusionTicket Application
-// We assume each event is provided with a unique identifier,
-// Thus, the addEvent behaves like SQL insert
-// RUN: %boogie -noinfer -typeEncoding:m -trace -errorTrace:2 -useArrayTheory "%FusionTicketInstrumented.bpl" > "%FusionTicketInstrumented.bpl.solution"
+// FusionTicket Application 
+// It has 3 transactions
+// We assume each event regardless of the venue is provided with a unique identifier, thus the addEvent behaves like an SQL insert 
+// Non-robustness check between PC and SI
+// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
 
 type Pid;
 type Eid;   // Event identifier type
 type Vid;  //  Venue identifier type
 
 function {:builtin "MapConst"} MapConstBool(bool) : [Pid]bool;
-function {:inline} {:linear "pid"} TidCollector(x: Pid) : [Pid]bool
+function {:inline} {:linear "pid"} PidCollector(x: Pid) : [Pid]bool
 {
   MapConstBool(false)[x := true]
 }
@@ -17,31 +19,27 @@ function {:inline} {:linear "pid"} TidCollector(x: Pid) : [Pid]bool
 var   {:layer 0,2} EventsByVenue        : [Vid][Eid]bool;	
 var   {:layer 0,2} EventNbTicket        : [Vid][Eid]int;
 
+//////////////////////////////////////////////
+// Auxiliary variables for the instrumentation:
+//////////////////////////////////////////////
+
 // secondary shared variables to simulate disabled writes and reads
 
 var   {:layer 0,2} copyEventsByVenue        : [Vid][Eid]bool;	
 var   {:layer 0,2} copyEventNbTicket        : [Vid][Eid]int;
 
-
-
-// 
 var {:layer 0,2} hb : bool;
-
-
 var {:layer 0,2} att : bool;
 
 var {:layer 0,2} hbd: [int][Vid][Eid]int;  // hbd[1] for the EventNbTicket table
 										  // hbd[2] for the EventsByVenue table
 
-
 var {:layer 0,2} varAtt1 : Vid;
 var {:layer 0,2} varAtt2 : Eid;
-
 
 const unique lda, sta: int;
 
 axiom ((lda == 1) && (sta == 2));
-
 
 const unique attPid : Pid;
 const unique helperPid : Pid;
@@ -49,12 +47,9 @@ const unique helperPid : Pid;
 const unique VNIL0: Vid;
 const unique ENIL0: Eid;
 
-
-function {:builtin "((as const (Array Int (Array Int Int))) 0)"} I0() returns ([Vid][Eid] int);
-function {:builtin "((as const (Array Int (Array Int Bool))) False)"} I1() returns ([Vid][Eid] bool);
-function {:builtin "((as const (Array Int (Array Int (Array Int Bool)))) False)"} I2() returns ([Vid][Eid][Pid] bool);
-
-//  Process session	
+////////////////////////////////////////////////////////////////////////////////
+// Procedure of a process
+////////////////////////////////////////////////////////////////////////////////
 	
 procedure {:yields} {:layer 2} process({:linear "pid"} pid:Pid)
 requires {:layer 2} (pid == attPid || pid == helperPid);
@@ -96,6 +91,10 @@ requires {:layer 2} (pid == attPid || pid == helperPid);
     yield;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+/// An init procedure for initializing the auxiliary variables
+///////////////////////////////////////////////////////////////////////////////
+
 procedure  {:atomic} {:layer 2}  init()
 {
   assume !hb;
@@ -109,8 +108,9 @@ ensures {:layer 1} !hb;
 ensures {:layer 1} (varAtt1 == VNIL0 && varAtt2 == ENIL0 && !att);
 ensures {:layer 1} (forall eventId:Eid, venueId:Vid::  hbd[1][venueId][eventId] == 0 && hbd[2][venueId][eventId] == 0) ;
 
-
-
+///////////////////////////////////////////////////////////////////////////////
+/// The instrumented FusionTicket transactions
+///////////////////////////////////////////////////////////////////////////////
 
 procedure  {:atomic}{:layer 2} browse(pid:Pid, venueId0:Vid) returns (eventsId:[Eid]bool)
 {  	   
@@ -118,7 +118,7 @@ procedure  {:atomic}{:layer 2} browse(pid:Pid, venueId0:Vid) returns (eventsId:[
 }
 procedure  {:yields} {:layer 1} {:refines "browse"}  Browse(pid:Pid,venueId0:Vid) returns (eventsId:[Eid]bool);
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  purchaseTicket(pid:Pid, eventId0:Eid, venueId0: Vid) returns (price:int)
 modifies  EventNbTicket;
@@ -187,8 +187,10 @@ modifies hb, hbd, att, varAtt1, varAtt2;
 
 }
 procedure  {:yields} {:layer 1} {:refines "purchaseTicket"}  PurchaseTicket(pid:Pid, eventId0:Eid, venueId0: Vid) returns (price:int);
-		ensures {:layer 1} ((EventNbTicket[venueId0][eventId0] == old(EventNbTicket[venueId0][eventId0]) - 1) || (copyEventNbTicket[venueId0][eventId0] == EventNbTicket[venueId0][eventId0] - 1));
+		ensures {:layer 1} ((EventNbTicket[venueId0][eventId0] == old(EventNbTicket[venueId0][eventId0]) - 1) || 
+							(copyEventNbTicket[venueId0][eventId0] == EventNbTicket[venueId0][eventId0] - 1));
 
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2} addEvent(pid:Pid, eventId0:Eid, venueId0:Vid) 
 modifies EventsByVenue, EventNbTicket;

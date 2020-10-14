@@ -1,27 +1,36 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing FusionTicket/FusionTicket-Instrumented-SI.bpl
+>>> Becoming sentient   [0.000152 s]
+Parsing FusionTicket-Instrumented-SI.bpl
+>>> Starting resolution   [0.056502 s]
+>>> Starting typechecking   [0.076676 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.274431 s]
+>>> Starting live variable analysis   [0.287723 s]
+>>> Finished implementation verification   [0.413036 s]
 
 Verifying process_1 ...
-  [0.128 s, 0 proof obligations]  verified
+  [0.139 s, 0 proof obligations]  verified
+>>> Starting implementation verification   [0.417506 s]
+>>> Starting live variable analysis   [0.418433 s]
+>>> Finished implementation verification   [0.442969 s]
 
 Verifying process_2 ...
-  [0.026 s, 16 proof obligations]  error
-FusionTicket/FusionTicket-Instrumented-SI.bpl(94,5): Error BP5001: This assertion might not hold.
+  [0.025 s, 16 proof obligations]  error
+FusionTicket-Instrumented-SI.bpl(89,5): Error BP5001: This assertion might not hold.
 Execution trace:
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(69,5): anon0
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(69,5): anon0_1
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(101,3): inline$init$0$anon0
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(69,5): anon0_1$1
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(69,5): anon0_0
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(88,5): anon3_Then
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(129,5): inline$purchaseTicket$0$anon0
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(129,5): inline$purchaseTicket$0$anon12_Else
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(156,3): inline$purchaseTicket$0$anon14_Then
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(164,10): inline$purchaseTicket$0$anon15_Then
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(171,30): inline$purchaseTicket$0$anon8
-    FusionTicket/FusionTicket-Instrumented-SI.bpl(88,5): anon3_Then$1
+    FusionTicket-Instrumented-SI.bpl(64,5): anon0
+    FusionTicket-Instrumented-SI.bpl(64,5): anon0_1
+    FusionTicket-Instrumented-SI.bpl(100,3): inline$init$0$anon0
+    FusionTicket-Instrumented-SI.bpl(64,5): anon0_1$1
+    FusionTicket-Instrumented-SI.bpl(64,5): anon0_0
+    FusionTicket-Instrumented-SI.bpl(83,5): anon3_Then
+    FusionTicket-Instrumented-SI.bpl(129,5): inline$purchaseTicket$0$anon0
+    FusionTicket-Instrumented-SI.bpl(129,5): inline$purchaseTicket$0$anon12_Else
+    FusionTicket-Instrumented-SI.bpl(156,3): inline$purchaseTicket$0$anon14_Then
+    FusionTicket-Instrumented-SI.bpl(164,10): inline$purchaseTicket$0$anon15_Then
+    FusionTicket-Instrumented-SI.bpl(171,30): inline$purchaseTicket$0$anon8
+    FusionTicket-Instrumented-SI.bpl(83,5): anon3_Then$1
 
 Boogie program verifier finished with 1 verified, 1 error

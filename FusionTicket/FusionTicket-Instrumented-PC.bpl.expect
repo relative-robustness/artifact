@@ -1,29 +1,44 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing FusionTicket/FusionTicket-Instrumented-PC.bpl
+>>> Becoming sentient   [0.000126 s]
+Parsing FusionTicket-Instrumented-PC.bpl
+>>> Starting resolution   [0.064386 s]
+>>> Starting typechecking   [0.089348 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.331268 s]
+>>> Starting live variable analysis   [0.34789 s]
+>>> Finished implementation verification   [0.500282 s]
 
 Verifying process_1 ...
-  [0.139 s, 0 proof obligations]  verified
+  [0.169 s, 0 proof obligations]  verified
+>>> Starting implementation verification   [0.505356 s]
+>>> Starting live variable analysis   [0.506283 s]
+>>> Finished implementation verification   [0.54675 s]
 
 Verifying process_2 ...
-  [0.037 s, 34 proof obligations]  error
-FusionTicket/FusionTicket-Instrumented-PC.bpl(125,6): Error BP5001: This assertion might not hold.
+  [0.041 s, 34 proof obligations]  error
+FusionTicket-Instrumented-PC.bpl(121,6): Error BP5001: This assertion might not hold.
 Execution trace:
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_1
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(132,3): inline$init$0$anon0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_1$1
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(69,5): anon0_0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(85,2): anon7_Else
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(97,5): anon2_0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(102,5): anon8_Else
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(113,5): anon4_0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(119,3): anon9_Then
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(151,5): inline$browse$0$anon0
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(153,8): inline$browse$0$anon3_Then
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(164,11): inline$browse$0$anon2
-    FusionTicket/FusionTicket-Instrumented-PC.bpl(119,3): anon9_Then$1
+    FusionTicket-Instrumented-PC.bpl(63,2): anon0
+    FusionTicket-Instrumented-PC.bpl(63,2): anon0_1
+    FusionTicket-Instrumented-PC.bpl(132,3): inline$init$0$anon0
+    FusionTicket-Instrumented-PC.bpl(63,2): anon0_1$1
+    FusionTicket-Instrumented-PC.bpl(63,2): anon0_0
+    FusionTicket-Instrumented-PC.bpl(80,2): anon7_Else
+    FusionTicket-Instrumented-PC.bpl(93,5): anon2_0
+    FusionTicket-Instrumented-PC.bpl(100,5): anon8_Then
+    FusionTicket-Instrumented-PC.bpl(175,5): inline$purchaseTicket$0$anon0
+    FusionTicket-Instrumented-PC.bpl(175,5): inline$purchaseTicket$0$anon12_Else
+    FusionTicket-Instrumented-PC.bpl(198,3): inline$purchaseTicket$0$anon14_Then
+    FusionTicket-Instrumented-PC.bpl(206,10): inline$purchaseTicket$0$anon15_Then
+    FusionTicket-Instrumented-PC.bpl(213,30): inline$purchaseTicket$0$anon8
+    FusionTicket-Instrumented-PC.bpl(100,5): anon8_Then$1
+    FusionTicket-Instrumented-PC.bpl(109,5): anon4_0
+    FusionTicket-Instrumented-PC.bpl(115,3): anon9_Then
+    FusionTicket-Instrumented-PC.bpl(152,5): inline$browse$0$anon0
+    FusionTicket-Instrumented-PC.bpl(154,8): inline$browse$0$anon3_Then
+    FusionTicket-Instrumented-PC.bpl(163,11): inline$browse$0$anon2
+    FusionTicket-Instrumented-PC.bpl(115,3): anon9_Then$1
 
 Boogie program verifier finished with 1 verified, 1 error

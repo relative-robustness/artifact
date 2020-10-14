@@ -1,9 +1,6 @@
 // Epinions Application
 // It has 8 transactions
 // A user is represented by a single process
-// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
-// RUN: %diff "%s.expect" "%t"
-
 
 type Pid;           // Process identifier
 
@@ -34,7 +31,9 @@ var {:layer 0,2} Trust: [Uid][Uid]int;
 var {:layer 0,2} ActiveItem: [Iid]bool;
 var {:layer 0,2} ItemName: [Iid]Itl;
 
-////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+/// Epinions transactions
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  getItemReviewsByTrustedUser(iid:Iid, uid:Uid) returns (ItemReviewers:[Uid]int, TrustedUsers:[Uid]int)
 {  

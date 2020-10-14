@@ -1,106 +1,208 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing CassandraLock/CassandraLock-Cmover.bpl
+>>> Becoming sentient   [0.000222 s]
+Parsing CassandraLock-Cmover.bpl
+>>> Starting resolution   [0.0502 s]
+>>> Starting typechecking   [0.06553 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.238213 s]
+>>> Starting live variable analysis   [0.252976 s]
+>>> Finished implementation verification   [0.364775 s]
 
 Verifying CommutativityChecker_tryLockR_tryLockW ...
-  [0.120 s, 1 proof obligation]  verified
+  [0.127 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.369546 s]
+>>> Starting live variable analysis   [0.36974 s]
+>>> Finished implementation verification   [0.375961 s]
 
 Verifying CommutativityChecker_tryLockR_unlockW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.376406 s]
+>>> Starting live variable analysis   [0.376634 s]
+>>> Finished implementation verification   [0.382836 s]
 
 Verifying CommutativityChecker_tryLockR_keepAliveW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.383076 s]
+>>> Starting live variable analysis   [0.383284 s]
+>>> Finished implementation verification   [0.389177 s]
 
 Verifying CommutativityChecker_tryLockW_tryLockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.389515 s]
+>>> Starting live variable analysis   [0.389802 s]
+>>> Finished implementation verification   [0.396727 s]
 
 Verifying CommutativityChecker_tryLockW_tryLockW ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.396995 s]
+>>> Starting live variable analysis   [0.39719 s]
+>>> Finished implementation verification   [0.403255 s]
 
 Verifying CommutativityChecker_tryLockW_unlockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.403451 s]
+>>> Starting live variable analysis   [0.403701 s]
+>>> Finished implementation verification   [0.409523 s]
 
 Verifying CommutativityChecker_tryLockW_unlockW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.409756 s]
+>>> Starting live variable analysis   [0.409996 s]
+>>> Finished implementation verification   [0.416202 s]
 
 Verifying CommutativityChecker_tryLockW_keepAliveR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.416423 s]
+>>> Starting live variable analysis   [0.416625 s]
+>>> Finished implementation verification   [0.422312 s]
 
 Verifying CommutativityChecker_tryLockW_keepAliveW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.422572 s]
+>>> Starting live variable analysis   [0.422769 s]
+>>> Finished implementation verification   [0.428451 s]
 
 Verifying CommutativityChecker_unlockR_tryLockW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.428769 s]
+>>> Starting live variable analysis   [0.429929 s]
+>>> Finished implementation verification   [0.435662 s]
 
 Verifying CommutativityChecker_unlockR_unlockW ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.435849 s]
+>>> Starting live variable analysis   [0.43603 s]
+>>> Finished implementation verification   [0.443287 s]
 
 Verifying CommutativityChecker_unlockR_keepAliveW ...
-  [0.008 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.443531 s]
+>>> Starting live variable analysis   [0.443728 s]
+>>> Finished implementation verification   [0.44921 s]
 
 Verifying CommutativityChecker_unlockW_tryLockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.449375 s]
+>>> Starting live variable analysis   [0.449591 s]
+>>> Finished implementation verification   [0.455295 s]
 
 Verifying CommutativityChecker_unlockW_tryLockW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.455501 s]
+>>> Starting live variable analysis   [0.455726 s]
+>>> Finished implementation verification   [0.46116 s]
 
 Verifying CommutativityChecker_unlockW_unlockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.461279 s]
+>>> Starting live variable analysis   [0.461505 s]
+>>> Finished implementation verification   [0.467719 s]
 
 Verifying CommutativityChecker_unlockW_unlockW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.467881 s]
+>>> Starting live variable analysis   [0.468044 s]
+>>> Finished implementation verification   [0.473459 s]
 
 Verifying CommutativityChecker_unlockW_keepAliveR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.473679 s]
+>>> Starting live variable analysis   [0.473879 s]
+>>> Finished implementation verification   [0.479517 s]
 
 Verifying CommutativityChecker_unlockW_keepAliveW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.479657 s]
+>>> Starting live variable analysis   [0.479797 s]
+>>> Finished implementation verification   [0.485301 s]
 
 Verifying CommutativityChecker_keepAliveR_tryLockW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.485448 s]
+>>> Starting live variable analysis   [0.485613 s]
+>>> Finished implementation verification   [0.491438 s]
 
 Verifying CommutativityChecker_keepAliveR_unlockW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.491776 s]
+>>> Starting live variable analysis   [0.492011 s]
+>>> Finished implementation verification   [0.497804 s]
 
 Verifying CommutativityChecker_keepAliveR_keepAliveW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.498055 s]
+>>> Starting live variable analysis   [0.498256 s]
+>>> Finished implementation verification   [0.504133 s]
 
 Verifying CommutativityChecker_keepAliveW_tryLockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.504346 s]
+>>> Starting live variable analysis   [0.504554 s]
+>>> Finished implementation verification   [0.510234 s]
 
 Verifying CommutativityChecker_keepAliveW_tryLockW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.510513 s]
+>>> Starting live variable analysis   [0.510723 s]
+>>> Finished implementation verification   [0.516553 s]
 
 Verifying CommutativityChecker_keepAliveW_unlockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.516842 s]
+>>> Starting live variable analysis   [0.517035 s]
+>>> Finished implementation verification   [0.523333 s]
 
 Verifying CommutativityChecker_keepAliveW_unlockW ...
-  [0.008 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.523621 s]
+>>> Starting live variable analysis   [0.523825 s]
+>>> Finished implementation verification   [0.530036 s]
 
 Verifying CommutativityChecker_keepAliveW_keepAliveR ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.530319 s]
+>>> Starting live variable analysis   [0.530593 s]
+>>> Finished implementation verification   [0.536433 s]
 
 Verifying CommutativityChecker_keepAliveW_keepAliveW ...
-  [0.008 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.536671 s]
+>>> Starting live variable analysis   [0.536822 s]
+>>> Finished implementation verification   [0.542226 s]
 
 Verifying LinearityChecker_tryLockR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.542385 s]
+>>> Starting live variable analysis   [0.542543 s]
+>>> Finished implementation verification   [0.548226 s]
 
 Verifying LinearityChecker_tryLockW ...
-  [0.009 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.548431 s]
+>>> Starting live variable analysis   [0.548551 s]
+>>> Finished implementation verification   [0.553947 s]
 
 Verifying LinearityChecker_unlockR ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.554225 s]
+>>> Starting live variable analysis   [0.554375 s]
+>>> Finished implementation verification   [0.560059 s]
 
 Verifying LinearityChecker_unlockW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.560303 s]
+>>> Starting live variable analysis   [0.560468 s]
+>>> Finished implementation verification   [0.566179 s]
 
 Verifying LinearityChecker_keepAliveR ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.566396 s]
+>>> Starting live variable analysis   [0.566571 s]
+>>> Finished implementation verification   [0.572181 s]
 
 Verifying LinearityChecker_keepAliveW ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
 
 Boogie program verifier finished with 33 verified, 0 errors
