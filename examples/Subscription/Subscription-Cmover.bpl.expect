@@ -1,96 +1,141 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Subscription/Subscription-Cmover.bpl
+>>> Becoming sentient   [0.000135 s]
+Parsing Subscription-Cmover.bpl
+>>> Starting resolution   [0.048959 s]
+>>> Starting typechecking   [0.063589 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.231692 s]
+>>> Starting live variable analysis   [0.246592 s]
+>>> Finished implementation verification   [0.356563 s]
 
 Verifying CommutativityChecker_addUserR_addUserW ...
-  [0.120 s, 1 proof obligation]  error
+  [0.125 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(22,31): Related location: Commutativity check between addUserR and addUserW failed
+Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserR and addUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(22,31): inline$addUserR$0$Entry
-    Subscription/Subscription-Cmover.bpl(24,3): inline$addUserR$0$anon0
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+    Subscription-Cmover.bpl(29,31): inline$addUserR$0$Entry
+    Subscription-Cmover.bpl(31,3): inline$addUserR$0$anon0
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Return
+>>> Starting implementation verification   [0.365311 s]
+>>> Starting live variable analysis   [0.365539 s]
+>>> Finished implementation verification   [0.372047 s]
 
 Verifying CommutativityChecker_addUserR_removeUserW ...
   [0.007 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(22,31): Related location: Commutativity check between addUserR and removeUserW failed
+Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserR and removeUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(22,31): inline$addUserR$0$Entry
-    Subscription/Subscription-Cmover.bpl(24,3): inline$addUserR$0$anon0
-    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Return
+    Subscription-Cmover.bpl(29,31): inline$addUserR$0$Entry
+    Subscription-Cmover.bpl(31,3): inline$addUserR$0$anon0
+    Subscription-Cmover.bpl(58,18): inline$removeUserW$0$anon0
+    Subscription-Cmover.bpl(55,31): inline$removeUserW$0$Return
+>>> Starting implementation verification   [0.372597 s]
+>>> Starting live variable analysis   [0.372769 s]
+>>> Finished implementation verification   [0.378455 s]
 
 Verifying CommutativityChecker_addUserW_addUserR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.378663 s]
+>>> Starting live variable analysis   [0.378886 s]
+>>> Finished implementation verification   [0.387326 s]
 
 Verifying CommutativityChecker_addUserW_addUserW ...
-  [0.010 s, 1 proof obligation]  error
+  [0.009 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and addUserW failed
+Subscription-Cmover.bpl(37,31): Related location: Commutativity check between addUserW and addUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$1$anon0
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$1$Return
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Entry
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(40,18): inline$addUserW$1$anon0
+    Subscription-Cmover.bpl(37,31): inline$addUserW$1$Return
+>>> Starting implementation verification   [0.387564 s]
+>>> Starting live variable analysis   [0.387716 s]
+>>> Finished implementation verification   [0.393842 s]
 
 Verifying CommutativityChecker_addUserW_removeUserR ...
   [0.006 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and removeUserR failed
+Subscription-Cmover.bpl(37,31): Related location: Commutativity check between addUserW and removeUserR failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(40,3): inline$removeUserR$0$anon0
-    Subscription/Subscription-Cmover.bpl(38,31): inline$removeUserR$0$Return
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Entry
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(49,3): inline$removeUserR$0$anon0
+    Subscription-Cmover.bpl(47,31): inline$removeUserR$0$Return
+>>> Starting implementation verification   [0.394044 s]
+>>> Starting live variable analysis   [0.394272 s]
+>>> Finished implementation verification   [0.400433 s]
 
 Verifying CommutativityChecker_addUserW_removeUserW ...
   [0.006 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(29,31): Related location: Commutativity check between addUserW and removeUserW failed
+Subscription-Cmover.bpl(37,31): Related location: Commutativity check between addUserW and removeUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Entry
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Return
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Entry
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(58,18): inline$removeUserW$0$anon0
+    Subscription-Cmover.bpl(55,31): inline$removeUserW$0$Return
+>>> Starting implementation verification   [0.400634 s]
+>>> Starting live variable analysis   [0.400822 s]
+>>> Finished implementation verification   [0.406529 s]
 
 Verifying CommutativityChecker_removeUserR_addUserW ...
   [0.006 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(38,31): Related location: Commutativity check between removeUserR and addUserW failed
+Subscription-Cmover.bpl(47,31): Related location: Commutativity check between removeUserR and addUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(38,31): inline$removeUserR$0$Entry
-    Subscription/Subscription-Cmover.bpl(40,3): inline$removeUserR$0$anon0
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+    Subscription-Cmover.bpl(47,31): inline$removeUserR$0$Entry
+    Subscription-Cmover.bpl(49,3): inline$removeUserR$0$anon0
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Return
+>>> Starting implementation verification   [0.406773 s]
+>>> Starting live variable analysis   [0.407106 s]
+>>> Finished implementation verification   [0.418682 s]
 
 Verifying CommutativityChecker_removeUserR_removeUserW ...
-  [0.013 s, 1 proof obligation]  verified
+  [0.012 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.418964 s]
+>>> Starting live variable analysis   [0.419108 s]
+>>> Finished implementation verification   [0.427177 s]
 
 Verifying CommutativityChecker_removeUserW_addUserR ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.427366 s]
+>>> Starting live variable analysis   [0.427541 s]
+>>> Finished implementation verification   [0.433813 s]
 
 Verifying CommutativityChecker_removeUserW_addUserW ...
-  [0.007 s, 1 proof obligation]  error
+  [0.006 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Subscription/Subscription-Cmover.bpl(45,31): Related location: Commutativity check between removeUserW and addUserW failed
+Subscription-Cmover.bpl(55,31): Related location: Commutativity check between removeUserW and addUserW failed
 Execution trace:
-    Subscription/Subscription-Cmover.bpl(45,31): inline$removeUserW$0$Entry
-    Subscription/Subscription-Cmover.bpl(48,18): inline$removeUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(32,18): inline$addUserW$0$anon0
-    Subscription/Subscription-Cmover.bpl(29,31): inline$addUserW$0$Return
+    Subscription-Cmover.bpl(55,31): inline$removeUserW$0$Entry
+    Subscription-Cmover.bpl(58,18): inline$removeUserW$0$anon0
+    Subscription-Cmover.bpl(40,18): inline$addUserW$0$anon0
+    Subscription-Cmover.bpl(37,31): inline$addUserW$0$Return
+>>> Starting implementation verification   [0.434004 s]
+>>> Starting live variable analysis   [0.434211 s]
+>>> Finished implementation verification   [0.439816 s]
 
 Verifying CommutativityChecker_removeUserW_removeUserR ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.439959 s]
+>>> Starting live variable analysis   [0.440104 s]
+>>> Finished implementation verification   [0.44628 s]
 
 Verifying CommutativityChecker_removeUserW_removeUserW ...
   [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.446493 s]
+>>> Starting live variable analysis   [0.447807 s]
+>>> Finished implementation verification   [0.45323 s]
 
 Verifying LinearityChecker_removeUserR ...
-  [0.006 s, 1 proof obligation]  verified
+  [0.007 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.453484 s]
+>>> Starting live variable analysis   [0.453591 s]
+>>> Finished implementation verification   [0.45923 s]
 
 Verifying LinearityChecker_removeUserW ...
   [0.006 s, 1 proof obligation]  verified

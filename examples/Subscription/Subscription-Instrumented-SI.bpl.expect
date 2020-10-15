@@ -1,26 +1,38 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Subscription/Subscription-Instrumented-SI.bpl
+>>> Becoming sentient   [0.000153 s]
+Parsing Subscription-Instrumented-SI.bpl
+>>> Starting resolution   [0.05685 s]
+>>> Starting typechecking   [0.075577 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.271585 s]
+>>> Starting live variable analysis   [0.284872 s]
+>>> Finished implementation verification   [0.410728 s]
 
 Verifying process_1 ...
-  [0.136 s, 0 proof obligations]  verified
+  [0.139 s, 0 proof obligations]  verified
+>>> Starting implementation verification   [0.415601 s]
+>>> Starting live variable analysis   [0.416403 s]
+>>> Finished implementation verification   [0.436694 s]
 
 Verifying process_2 ...
-  [0.023 s, 15 proof obligations]  error
-Subscription/Subscription-Instrumented-SI.bpl(80,6): Error BP5001: This assertion might not hold.
+  [0.021 s, 15 proof obligations]  error
+Subscription-Instrumented-SI.bpl(85,6): Error BP5001: This assertion might not hold.
 Execution trace:
-    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0
-    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_1
-    Subscription/Subscription-Instrumented-SI.bpl(87,3): inline$init$0$anon0
-    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_1$1
-    Subscription/Subscription-Instrumented-SI.bpl(59,5): anon0_0
-    Subscription/Subscription-Instrumented-SI.bpl(75,5): anon3_Then
-    Subscription/Subscription-Instrumented-SI.bpl(104,5): inline$addUser$0$anon0
-    Subscription/Subscription-Instrumented-SI.bpl(104,5): inline$addUser$0$anon4_Else
-    Subscription/Subscription-Instrumented-SI.bpl(120,3): inline$addUser$0$anon5_Then
-    Subscription/Subscription-Instrumented-SI.bpl(75,5): anon3_Then$1
+    Subscription-Instrumented-SI.bpl(64,5): anon0
+    Subscription-Instrumented-SI.bpl(64,5): anon0_1
+    Subscription-Instrumented-SI.bpl(96,3): inline$init$0$anon0
+    Subscription-Instrumented-SI.bpl(64,5): anon0_1$1
+    Subscription-Instrumented-SI.bpl(64,5): anon0_0
+    Subscription-Instrumented-SI.bpl(80,5): anon3_Then
+    Subscription-Instrumented-SI.bpl(116,5): inline$addUser$0$anon0
+    Subscription-Instrumented-SI.bpl(116,5): inline$addUser$0$anon4_Else
+    Subscription-Instrumented-SI.bpl(132,3): inline$addUser$0$anon5_Then
+    Subscription-Instrumented-SI.bpl(80,5): anon3_Then$1
+>>> Starting implementation verification   [0.44111 s]
+>>> Starting live variable analysis   [0.442435 s]
+>>> Finished implementation verification   [0.448412 s]
 
 Verifying LinearityChecker_removeUser ...
   [0.007 s, 1 proof obligation]  verified

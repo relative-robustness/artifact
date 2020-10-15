@@ -1,16 +1,21 @@
 // Subscription Application
+// It has 2 transactions: addUser and removeUser
+// It is inspired from the Twitter application 
+// Non-robustness check between PC and SI
+// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
 
 type Pid;
 type Uid;
 
 function {:builtin "MapConst"} MapConstBool(bool) : [Pid]bool;
-function {:inline} {:linear "pid"} TidCollector(x: Pid) : [Pid]bool
+function {:inline} {:linear "pid"} PidCollector(x: Pid) : [Pid]bool
 {
   MapConstBool(false)[x := true]
 }
 
 function {:builtin "MapConst"} MapConstBool2(bool) : [Uid]bool;
-function {:inline} {:linear "uid"} TidCollector2(x: Uid) : [Uid]bool
+function {:inline} {:linear "uid"} UidCollector(x: Uid) : [Uid]bool
 {
   MapConstBool2(false)[x := true]
 }
@@ -18,20 +23,18 @@ function {:inline} {:linear "uid"} TidCollector2(x: Uid) : [Uid]bool
 var {:layer 0,2} ActiveUser: [Uid]bool;
 var {:layer 0,2} UserPassword: [Uid]int;
 
-// secondary shared variables to simulate disabled writes and reads
+//////////////////////////////////////////////
+// Auxiliary variables for the instrumentation:
+//////////////////////////////////////////////
 
 var {:layer 0,2} copyActiveUser: [Uid]bool;
 var {:layer 0,2} copyUserPassword: [Uid]int;
 
-
-// 
 var {:layer 0,2} hb : bool;
-
 
 var {:layer 0,2} att : bool;
 
 var {:layer 0,2} hbd: [Pid][Uid]int; // to track dependency access to the table ActiveUser
-
 
 var {:layer 0,2} varAtt : Uid;
 
@@ -39,17 +42,19 @@ const unique lda, sta: int;
 
 axiom ((lda == 1) && (sta == 2));
 
-
 const unique attPid : Pid;
 const unique helperPid : Pid;
 
 const unique UNIL0: Uid;
 
-
+///////////////////////////////////////////////////////////////////////////////
 function {:builtin "((as const (Array Int Int)) 0)"} I0() returns ([Uid] int);
 function {:builtin "((as const (Array Int Bool)) False)"} I1() returns ([Uid] bool);
+///////////////////////////////////////////////////////////////////////////////
 
-//  Process session	
+////////////////////////////////////////////////////////////////////////////////
+// Procedure of a process
+////////////////////////////////////////////////////////////////////////////////
 	
 procedure {:yields} {:layer 2} process({:linear "pid"} pid:Pid, uid: Uid)
 requires {:layer 2} (pid == attPid || pid == helperPid);
@@ -82,6 +87,10 @@ requires {:layer 2} (pid == attPid || pid == helperPid);
     yield;
 }
 
+///////////////////////////////////////////////////////////////////////////////
+/// An init procedure for initializing the auxiliary variables
+///////////////////////////////////////////////////////////////////////////////
+
 procedure  {:atomic} {:layer 2}  init()
 {
   assume !hb;
@@ -95,6 +104,9 @@ ensures {:layer 1} !hb;
 ensures {:layer 1} (varAtt == UNIL0 && !att);
 ensures {:layer 1} (forall pid:Pid, uid:Uid::  hbd[pid][uid] == 0) ;
 
+///////////////////////////////////////////////////////////////////////////////
+/// The instrumented Subscription transactions
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  addUser(pid:Pid, uid:Uid, p: int)
 modifies ActiveUser, UserPassword;
@@ -136,6 +148,7 @@ modifies hbd, hb, att, varAtt;
 }
 procedure{:yields}{:layer 1} {:refines "addUser"} AddUser(pid:Pid, uid:Uid, p: int);
 
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  removeUser({:linear "uid"} uid:Uid)
 modifies ActiveUser, UserPassword;
