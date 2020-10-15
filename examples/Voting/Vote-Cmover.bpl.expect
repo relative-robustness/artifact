@@ -1,27 +1,45 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Voting/Vote-Cmover.bpl
+>>> Becoming sentient   [0.000146 s]
+Parsing Vote-Cmover.bpl
+>>> Starting resolution   [0.053113 s]
+>>> Starting typechecking   [0.069789 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.234506 s]
+>>> Starting live variable analysis   [0.249027 s]
+>>> Finished implementation verification   [0.401803 s]
 
 Verifying CommutativityChecker_addVoteR_addVoteW ...
-  [0.132 s, 1 proof obligation]  error
+  [0.167 s, 1 proof obligation]  error
 (0,0): Error BP5003: A postcondition might not hold on this return path.
-Voting/Vote-Cmover.bpl(36,31): Related location: Commutativity check between addVoteR and addVoteW failed
+Vote-Cmover.bpl(40,31): Related location: Commutativity check between addVoteR and addVoteW failed
 Execution trace:
-    Voting/Vote-Cmover.bpl(36,31): inline$addVoteR$0$Entry
-    Voting/Vote-Cmover.bpl(38,3): inline$addVoteR$0$anon0
-    Voting/Vote-Cmover.bpl(48,17): inline$addVoteW$0$anon0
-    Voting/Vote-Cmover.bpl(45,31): inline$addVoteW$0$Return
+    Vote-Cmover.bpl(40,31): inline$addVoteR$0$Entry
+    Vote-Cmover.bpl(42,3): inline$addVoteR$0$anon0
+    Vote-Cmover.bpl(53,17): inline$addVoteW$0$anon0
+    Vote-Cmover.bpl(50,31): inline$addVoteW$0$Return
+>>> Starting implementation verification   [0.410508 s]
+>>> Starting live variable analysis   [0.410772 s]
+>>> Finished implementation verification   [0.418944 s]
 
 Verifying CommutativityChecker_addVoteW_addVoteR ...
   [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.419332 s]
+>>> Starting live variable analysis   [0.419518 s]
+>>> Finished implementation verification   [0.427195 s]
 
 Verifying CommutativityChecker_addVoteW_addVoteW ...
-  [0.009 s, 1 proof obligation]  verified
+  [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.427319 s]
+>>> Starting live variable analysis   [0.428093 s]
+>>> Finished implementation verification   [0.433692 s]
 
 Verifying LinearityChecker_addVoteR ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.433793 s]
+>>> Starting live variable analysis   [0.433891 s]
+>>> Finished implementation verification   [0.439433 s]
 
 Verifying LinearityChecker_addVoteW ...
   [0.006 s, 1 proof obligation]  verified

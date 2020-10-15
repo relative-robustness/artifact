@@ -1,28 +1,40 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Voting/Vote-Instrumented.bpl
+>>> Becoming sentient   [0.000164 s]
+Parsing Vote-Instrumented.bpl
+>>> Starting resolution   [0.055959 s]
+>>> Starting typechecking   [0.07472 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.306015 s]
+>>> Starting live variable analysis   [0.319428 s]
+>>> Finished implementation verification   [0.447928 s]
 
 Verifying process_1 ...
-  [0.138 s, 0 proof obligations]  verified
+  [0.142 s, 0 proof obligations]  verified
+>>> Starting implementation verification   [0.452768 s]
+>>> Starting live variable analysis   [0.4537 s]
+>>> Finished implementation verification   [0.488581 s]
 
 Verifying process_2 ...
   [0.036 s, 21 proof obligations]  error
-Voting/Vote-Instrumented.bpl(128,8): Error BP5001: This assertion might not hold.
+Vote-Instrumented.bpl(124,8): Error BP5001: This assertion might not hold.
 Execution trace:
-    Voting/Vote-Instrumented.bpl(89,5): anon0
-    Voting/Vote-Instrumented.bpl(89,5): anon0_1
-    Voting/Vote-Instrumented.bpl(136,3): inline$init$0$anon0
-    Voting/Vote-Instrumented.bpl(89,5): anon0_1$1
-    Voting/Vote-Instrumented.bpl(89,5): anon0_0
-    Voting/Vote-Instrumented.bpl(105,2): anon5_Else
-    Voting/Vote-Instrumented.bpl(118,5): anon2_0
-    Voting/Vote-Instrumented.bpl(124,8): anon6_Then
-    Voting/Vote-Instrumented.bpl(158,3): inline$addVote$0$anon0
-    Voting/Vote-Instrumented.bpl(158,3): inline$addVote$0$anon4_Else
-    Voting/Vote-Instrumented.bpl(180,5): inline$addVote$0$anon5_Then
-    Voting/Vote-Instrumented.bpl(124,8): anon6_Then$1
+    Vote-Instrumented.bpl(86,5): anon0
+    Vote-Instrumented.bpl(86,5): anon0_1
+    Vote-Instrumented.bpl(136,3): inline$init$0$anon0
+    Vote-Instrumented.bpl(86,5): anon0_1$1
+    Vote-Instrumented.bpl(86,5): anon0_0
+    Vote-Instrumented.bpl(101,2): anon5_Else
+    Vote-Instrumented.bpl(114,5): anon2_0
+    Vote-Instrumented.bpl(120,8): anon6_Then
+    Vote-Instrumented.bpl(159,3): inline$addVote$0$anon0
+    Vote-Instrumented.bpl(159,3): inline$addVote$0$anon4_Else
+    Vote-Instrumented.bpl(182,5): inline$addVote$0$anon5_Then
+    Vote-Instrumented.bpl(120,8): anon6_Then$1
+>>> Starting implementation verification   [0.493429 s]
+>>> Starting live variable analysis   [0.495089 s]
+>>> Finished implementation verification   [0.502543 s]
 
 Verifying LinearityChecker_addVote ...
   [0.009 s, 1 proof obligation]  verified
