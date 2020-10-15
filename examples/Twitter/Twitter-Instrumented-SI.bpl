@@ -1,40 +1,41 @@
 // Twitter Application
+// It has 3 transactions: register, fellowUser, and addTweet
+// Non-robustness check between PC and SI
+// RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
+// RUN: %diff "%s.expect" "%t"
 
 type Pid;
 type Uid;
 
 function {:builtin "MapConst"} MapConstBool(bool) : [Pid]bool;
-function {:inline} {:linear "pid"} TidCollector(x: Pid) : [Pid]bool
+function {:inline} {:linear "pid"} PidCollector(x: Pid) : [Pid]bool
 {
   MapConstBool(false)[x := true]
 }
 
 function {:builtin "MapConst"} MapConstBool2(bool) : [Uid]bool;
-function {:inline} {:linear "uid"} TidCollector2(x: Uid) : [Uid]bool
+function {:inline} {:linear "uid"} UidCollector(x: Uid) : [Uid]bool
 {
   MapConstBool2(false)[x := true]
 }
 
-var {:layer 0,2} ActiveUser: [Uid]bool;
+var {:layer 0,2} RegistredUsers: [Uid]bool;
 var {:layer 0,2} UserPassword: [Uid]int;
 var {:layer 0,2} UserFollow: [Uid][Uid]bool;
 var {:layer 0,2} UserTweetFollowers: [Uid][Uid]int;
 
-// secondary shared variables to simulate disabled writes and reads
+//////////////////////////////////////////////
+// Auxiliary variables for the instrumentation:
+//////////////////////////////////////////////
 
-var {:layer 0,2} copyActiveUser: [Uid]bool;
+var {:layer 0,2} copyRegistredUsers: [Uid]bool;
 var {:layer 0,2} copyUserPassword: [Uid]int;
 
-
-
-// 
 var {:layer 0,2} hb : bool;
-
 
 var {:layer 0,2} att : bool;
 
-var {:layer 0,2} hbd: [Pid][Uid]int; // to track dependency access to the table ActiveUser
-
+var {:layer 0,2} hbd: [Pid][Uid]int; // to track dependency access to the table RegistredUsers
 
 var {:layer 0,2} varAtt : Uid;
 
@@ -42,17 +43,19 @@ const unique lda, sta: int;
 
 axiom ((lda == 1) && (sta == 2));
 
-
 const unique attPid : Pid;
 const unique helperPid : Pid;
 
 const unique UNIL0: Uid;
 
-
+///////////////////////////////////////////////////////////////////////////////
 function {:builtin "((as const (Array Int Int)) 0)"} I0() returns ([Uid] int);
 function {:builtin "((as const (Array Int Bool)) False)"} I1() returns ([Uid] bool);
+///////////////////////////////////////////////////////////////////////////////
 
-//  Process session	
+////////////////////////////////////////////////////////////////////////////////
+// Procedure of a process
+////////////////////////////////////////////////////////////////////////////////	
 	
 procedure {:yields} {:layer 2} process({:linear "pid"} pid:Pid, uid: Uid)
 requires {:layer 2} (pid == attPid || pid == helperPid);
@@ -78,12 +81,16 @@ requires {:layer 2} (pid == attPid || pid == helperPid);
 	  	assert {:layer 2}  (pid == attPid ==> hbd[pid][varAtt] != lda);
 	    assert {:layer 2}  (pid == helperPid ==> hbd[pid][varAtt] != lda);	
 
-	    call AddUser(pid, uid,password);
+	    call Register(pid, uid,password);
 
 	    assert {:layer 2}  (pid == helperPid ==> hbd[pid][varAtt] != lda);	           
     }	
     yield;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+/// An init procedure for initializing the auxiliary variables
+///////////////////////////////////////////////////////////////////////////////
 
 procedure  {:atomic} {:layer 2}  init()
 {
@@ -98,19 +105,22 @@ ensures {:layer 1} !hb;
 ensures {:layer 1} (varAtt == UNIL0 && !att);
 ensures {:layer 1} (forall pid:Pid, uid:Uid::  hbd[pid][uid] == 0) ;
 
+///////////////////////////////////////////////////////////////////////////////
+/// The instrumented Twitter transactions
+///////////////////////////////////////////////////////////////////////////////
 
-procedure {:atomic}{:layer 2}  addUser(pid:Pid, uid:Uid, p: int)
-modifies ActiveUser, UserPassword;
-modifies copyActiveUser, copyUserPassword;
+procedure {:atomic}{:layer 2}  register(pid:Pid, uid:Uid, p: int)
+modifies RegistredUsers, UserPassword;
+modifies copyRegistredUsers, copyUserPassword;
 modifies hbd, hb, att, varAtt;
 {  
-    assume (!ActiveUser[uid] &&  p != 0);
+    assume (!RegistredUsers[uid] &&  p != 0);
 
     if (pid == attPid && !att)
 	{ 
 			
         att := true;
-		copyActiveUser[uid] := true; 
+		copyRegistredUsers[uid] := true; 
         copyUserPassword[uid] := p;
 		
         varAtt := uid;
@@ -122,7 +132,7 @@ modifies hbd, hb, att, varAtt;
 	{								
 		assume (hbd[attPid][uid] >= lda);
 
-        ActiveUser[uid] := true; 
+        RegistredUsers[uid] := true; 
         UserPassword[uid] := p;
 	
 		hb := true;
@@ -132,29 +142,32 @@ modifies hbd, hb, att, varAtt;
 
 	else 
 	{
-	    ActiveUser[uid] := true; 
+	    RegistredUsers[uid] := true; 
         UserPassword[uid] := p;
 	}
     
 }
-procedure{:yields}{:layer 1} {:refines "addUser"} AddUser(pid:Pid, uid:Uid, p: int);
+procedure{:yields}{:layer 1} {:refines "register"} Register(pid:Pid, uid:Uid, p: int);
 
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  fellowUser({:linear "uid"} uid1:Uid, uid2:Uid)
 modifies UserFollow;
 {  
-    assume (!UserFollow[uid1][uid2] && ActiveUser[uid1] && ActiveUser[uid2] && uid1 != uid2);
+    assume (!UserFollow[uid1][uid2] && RegistredUsers[uid1] && RegistredUsers[uid2] && uid1 != uid2);
     
 	UserFollow[uid1][uid2] := true; 
 }
 procedure{:yields}{:layer 1} {:refines "fellowUser"} FellowUser({:linear "uid"} uid1:Uid, uid2:Uid);
+
+///////////////////////////////////////////////////////////////////////////////
 
 procedure {:atomic}{:layer 2}  addTweet({:linear "uid"} uid:Uid, tweet: int)
 modifies UserTweetFollowers;
 {  
     var copyTweet1, copyTweet2 : [Uid]int;	
 
-    assume (ActiveUser[uid] && tweet != 0);
+    assume (RegistredUsers[uid] && tweet != 0);
       
     copyTweet1 := UserTweetFollowers[uid];
 	UserTweetFollowers[uid]  := copyTweet2;

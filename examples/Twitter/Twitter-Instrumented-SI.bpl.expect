@@ -1,31 +1,46 @@
 [TRACE] Using prover: /usr/bin/z3
 Boogie program verifier version 2.4.1.10503, Copyright (c) 2003-2014, Microsoft.
-Parsing Twitter/Twitter-Instrumented-SI.bpl
+>>> Becoming sentient   [0.000142 s]
+Parsing Twitter-Instrumented-SI.bpl
+>>> Starting resolution   [0.055675 s]
+>>> Starting typechecking   [0.074297 s]
 Coalescing blocks...
 Inlining...
+>>> Starting implementation verification   [0.275307 s]
+>>> Starting live variable analysis   [0.288747 s]
+>>> Finished implementation verification   [0.421539 s]
 
 Verifying process_1 ...
-  [0.153 s, 0 proof obligations]  verified
+  [0.146 s, 0 proof obligations]  verified
+>>> Starting implementation verification   [0.428704 s]
+>>> Starting live variable analysis   [0.429588 s]
+>>> Finished implementation verification   [0.451859 s]
 
 Verifying process_2 ...
-  [0.025 s, 15 proof obligations]  error
-Twitter/Twitter-Instrumented-SI.bpl(83,6): Error BP5001: This assertion might not hold.
+  [0.023 s, 15 proof obligations]  error
+Twitter-Instrumented-SI.bpl(86,6): Error BP5001: This assertion might not hold.
 Execution trace:
-    Twitter/Twitter-Instrumented-SI.bpl(62,5): anon0
-    Twitter/Twitter-Instrumented-SI.bpl(62,5): anon0_1
-    Twitter/Twitter-Instrumented-SI.bpl(90,3): inline$init$0$anon0
-    Twitter/Twitter-Instrumented-SI.bpl(62,5): anon0_1$1
-    Twitter/Twitter-Instrumented-SI.bpl(62,5): anon0_0
-    Twitter/Twitter-Instrumented-SI.bpl(78,5): anon3_Then
-    Twitter/Twitter-Instrumented-SI.bpl(107,5): inline$addUser$0$anon0
-    Twitter/Twitter-Instrumented-SI.bpl(107,5): inline$addUser$0$anon4_Else
-    Twitter/Twitter-Instrumented-SI.bpl(123,3): inline$addUser$0$anon5_Then
-    Twitter/Twitter-Instrumented-SI.bpl(78,5): anon3_Then$1
+    Twitter-Instrumented-SI.bpl(65,5): anon0
+    Twitter-Instrumented-SI.bpl(65,5): anon0_1
+    Twitter-Instrumented-SI.bpl(97,3): inline$init$0$anon0
+    Twitter-Instrumented-SI.bpl(65,5): anon0_1$1
+    Twitter-Instrumented-SI.bpl(65,5): anon0_0
+    Twitter-Instrumented-SI.bpl(81,5): anon3_Then
+    Twitter-Instrumented-SI.bpl(117,5): inline$register$0$anon0
+    Twitter-Instrumented-SI.bpl(117,5): inline$register$0$anon4_Else
+    Twitter-Instrumented-SI.bpl(133,3): inline$register$0$anon5_Then
+    Twitter-Instrumented-SI.bpl(81,5): anon3_Then$1
+>>> Starting implementation verification   [0.456583 s]
+>>> Starting live variable analysis   [0.458236 s]
+>>> Finished implementation verification   [0.464722 s]
 
 Verifying LinearityChecker_fellowUser ...
   [0.008 s, 1 proof obligation]  verified
+>>> Starting implementation verification   [0.464945 s]
+>>> Starting live variable analysis   [0.465133 s]
+>>> Finished implementation verification   [0.470821 s]
 
 Verifying LinearityChecker_addTweet ...
-  [0.007 s, 1 proof obligation]  verified
+  [0.006 s, 1 proof obligation]  verified
 
 Boogie program verifier finished with 3 verified, 1 error
