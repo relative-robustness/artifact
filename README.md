@@ -7,13 +7,13 @@
 The directory ```boogie``` contains the source files of the Boogie program verifier version 2.4.1.10503
 that we used in our development. The latest version of Boogie can be found here: https://github.com/boogie-org/boogie.
 
-Each a sub-directory ```Y``` of the ```examples``` directory contains  the formalization for the application ```Y``` in the Boogie programming language. 
+Each sub-directory ```Y``` of the ```examples``` directory contains the formalization for the application ```Y``` in the Boogie programming language.
 
-The full formalization of the application is given the file which its name  ends with the word ```Original```.
+For each application, the Boogie encoding of the original application is given in the file which ends with the word ```Original```.
 
-A file which its name contains the word ```Instrumented``` contains  a client program of the corresponding application that is a witness  to a robustness violation. 
+For each application, a file which contains the word ```Instrumented``` is for a client program of the application that is a witness of a robustness violation.
 
-A file which its names ends with the word ```Cmover``` contains the movers checking necessary for building the commutativity dependency graph.
+For each application, a file which ends with the word ```Cmover``` contains the movers checking necessary for construction of the commutativity dependency graph. In the current version of the artifact, the graph is manually constructed based on the automated check of movers.
 
 # How to test the artifact
  
