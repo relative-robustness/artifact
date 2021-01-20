@@ -25,3 +25,17 @@ NOTE:  Tested with Boogie program verifier version 2.4.1.10503.
   1. Go to the ```examples``` directory
   2. RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
   3. RUN: %diff "%s.expect" "%t"
+
+
+hyperfine '../boogie/Binaries/boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory ./examples/Epinion/Epinions-Instrumented-3transactions.bpl > ./examples/Epinion/test3.text'
+
+hyperfine '../boogie/Binaries/boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory ./examples/Epinion/Epinions-Instrumented.bpl > ./examples/Epinion/test.text'
+
+hyperfine '../boogie/Binaries/boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory ./examples/SimpleCurrencyExchange/SimpleCurrencyExchange-Instrumented-5transactions.bpl > ./examples/SimpleCurrencyExchange/test5.text'
+
+wget https://github.com/sharkdp/hyperfine/releases/download/v1.11.0/hyperfine_1.11.0_amd64.deb
+sudo dpkg -i hyperfine_1.11.0_amd64.deb
+
+/usr/bin/time -v --format="%e" ../boogie/Binaries/boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory ./examples/FusionTicket/FusionTicket-Instrumented-PC-3transactions.bpl > ./examples/FusionTicket/test3.text
+
+
