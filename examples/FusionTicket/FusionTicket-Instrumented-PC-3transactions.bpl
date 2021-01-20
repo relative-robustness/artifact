@@ -4,7 +4,7 @@
 // Non-robustness check between CC and PC
 // RUN: /usr/bin/time -v --format="%e" %boogie -noinfer -typeEncoding:m -tracePOs -traceTimes  -trace  -useArrayTheory "%s" > "%t"
 // RUN: %diff "%s.expect" "%t"
-// 0.70
+// 0.73
 
 type Pid;
 type Eid;   // Event identifier type
@@ -78,7 +78,7 @@ requires {:layer 2} (pid == attPid || pid == helperPid);
 	assert  {:layer 2} (!att ==> (forall venueId:Vid, eventId:Eid:: hbd[1][venueId][eventId] == 0 &&  
 									hbd[2][venueId][eventId] == 0));
 	
-	if(pid == attPid)
+	if(*)
     {       
 		assert {:layer 2}  (pid == attPid ==> hbd[2][varAtt1][varAtt2] != lda);
 	    assert {:layer 2}  (pid == helperPid ==> hbd[2][varAtt1][varAtt2] != lda);		
@@ -111,7 +111,7 @@ requires {:layer 2} (pid == attPid || pid == helperPid);
 		assert {:layer 2}  (pid == attPid ==> hbd[2][varAtt1][varAtt2] != lda);
 	    assert {:layer 2}  (pid == helperPid ==> hbd[2][varAtt1][varAtt2] != lda);		
 	
-    if(pid == helperPid)
+    if(*)
     {
 		assert {:layer 2}  (pid == attPid ==> hbd[2][varAtt1][varAtt2] != lda);
 	    assert {:layer 2}  (pid == helperPid ==> hbd[2][varAtt1][varAtt2] != lda);		

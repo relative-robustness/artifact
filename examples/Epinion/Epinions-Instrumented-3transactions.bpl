@@ -91,7 +91,21 @@ requires {:layer 2} ((pid == attPid && uid == uid0) || (pid == helperPid && uid 
     call Init();
     assert  {:layer 2}   (att == false);
     assert  {:layer 2}   (hb == false);
-    assert  {:layer 2}   (forall iId:Iid, uId:Uid, pid0:Pid:: hbd[iId][uId][pid0] == 0); 
+    assert  {:layer 2}   (forall iId:Iid, uId:Uid, pid0:Pid:: hbd[iId][uId][pid0] == 0);
+
+	yield;
+	assert {:layer 2}  (pid == attPid ==> hbd[varAtt1][varAtt2][pid] != lda);
+	assert {:layer 2}  (pid == helperPid ==> hbd[varAtt1][varAtt2][pid] != lda);	
+	assert  {:layer 2} (pid == attPid ==> !att);
+	assert  {:layer 2} (!att ==> (forall iId:Iid, uId:Uid, pid0:Pid:: hbd[iId][uId][pid0] == 0));
+
+	call  UpdateItem(iId0, itName0);
+
+	assert {:layer 2}  (pid == attPid ==> hbd[varAtt1][varAtt2][pid] != lda);
+	assert {:layer 2}  (pid == helperPid ==> hbd[varAtt1][varAtt2][pid] != lda);	
+	assert  {:layer 2} (pid == attPid ==> !att);
+	assert  {:layer 2} (!att ==> (forall iId:Iid, uId:Uid, pid0:Pid:: hbd[iId][uId][pid0] == 0));
+   
    
     yield;
 	assert {:layer 2}  (pid == attPid ==> hbd[varAtt1][varAtt2][pid] != lda);
